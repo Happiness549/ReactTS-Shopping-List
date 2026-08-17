@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    <h1 className='text-blue-500 text-4xl'>Hi</h1>
-    </>
+  <BrowserRouter>
+  </BrowserRouter>
   )
 }
 
