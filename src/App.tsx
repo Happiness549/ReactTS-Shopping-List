@@ -6,6 +6,8 @@ import { Landing } from './pages/Landing'
 import {Login} from './pages/Login'
 import {SignUp} from './pages/SignUp'
 import {ShoppingList} from './components/ShoppingList/ShoppingList'
+import { MainLayout } from './components/ShoppingList/MainLayout'
+import { Home } from './pages/Home'
 
 function App() {
   const dispatch = useDispatch()
@@ -19,6 +21,12 @@ function App() {
       <Route path='/' element={<Landing />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />}/>
+      
+
+      <Route element={<MainLayout/>}>
+      <Route path='/home' element={<Home/>}/>
+
+      </Route>
     </Routes>
     </BrowserRouter>
   
