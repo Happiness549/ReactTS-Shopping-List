@@ -2,6 +2,7 @@ import {Card } from '../components/UI/Card'
 import {Text} from '../components/UI/Text'
 import {Input} from '../components/UI/Input'
 import {Button} from '../components/UI/Button'
+import {Link} from 'react-router-dom'
 
 export const SignUp = () => {
 
@@ -44,9 +45,9 @@ export const SignUp = () => {
                 <Button text='Create Account'
                 className='w-100 ml-9'/>
             </form>
-            <div className='flex'>
+            <div className='flex ml-60 mt-5'>
             <Text>Already have an account?</Text>
-            <Text variant='p' className='text-[#0C5776]'>Login</Text>
+            <Text variant='p' className='text-[#0C5776]'><Link to='/login'>Login</Link></Text>
 
             </div>
 
