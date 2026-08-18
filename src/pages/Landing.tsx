@@ -2,6 +2,10 @@ import react from 'react'
 import {Text} from '../components/UI/Text'
 import Shopping from '../assets/Shopping.jpg'
 import Trolley from '../assets/Trolley.webp'
+import { Link } from 'react-router-dom'
+
+
+
 export const Landing = () => {
   return (
     <div className='relative min-h-screen w-full overflow-hidden bg-[#021733] '>
@@ -16,19 +20,18 @@ export const Landing = () => {
                 alt="Trolley " 
                 className="w-14 h-auto object-contain rounded-lg shadow-xl text-[#9ECAE1]"
               />
-              <Text variant={'p'} className='text-white'>Home</Text>
-              <Text variant={'p'} className='text-white'>Login</Text>
+              <Text variant={'p'} className='text-white ml-130'><Link to='/login'>Login</Link></Text>
 
             </div>
        
-            <Text variant={'h1'} className='text-white text-7xl mt-20 '>Smart <br />Shopping</Text>
-            <Text variant={'h1'} className='text-[#9ECAE1] text-6xl '>better Living</Text>
+            <Text variant={'h1'} className='text-white text-7xl mt-20 '>Smart <br />Shopping.</Text>
+            <Text variant={'h1'} className='text-[#9ECAE1] text-6xl mt-3 '>better Living.</Text>
             <Text variant={'p'} className='text-white mt-9'>Creat lists.  Track items. </Text>
             <Text variant={'p'} className='text-white text-2xl'>Shop with ease.</Text>
               <img 
           src={Shopping} 
           alt="Shopping Bag " 
-          className="w-64 h-auto object-contain rounded-lg shadow-xl mt-60 "
+          className="w-104 h-auto object-contain rounded-lg shadow-xl mt-20 "
         />
           
           </div>

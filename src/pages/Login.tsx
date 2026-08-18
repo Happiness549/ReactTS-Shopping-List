@@ -37,7 +37,7 @@ export const Login = () => {
          />
          <div className='flex gap-29 ml-58 mt-5'>
               <Text variant={'p'}>Don't have an account? </Text>
-              <Text variant={'p'} className='text-[#0C5776]'>Create one </Text>
+              <Text variant={'p'} className='text-[#0C5776]'><Link to='/signup'>Create one</Link> </Text>
          </div>
 
        

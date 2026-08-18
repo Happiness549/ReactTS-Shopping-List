@@ -1,13 +1,24 @@
 import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Landing } from './pages/Landing'
+import {Login} from './pages/Login'
+import {SignUp} from './pages/SignUp'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-  <BrowserRouter>
-  </BrowserRouter>
+
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Landing />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<SignUp />}/>
+    </Routes>
+    </BrowserRouter>
+  
+    
   )
 }
 
