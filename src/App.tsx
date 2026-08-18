@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import {useDispatch} from 'react-redux'
+import {populateLists} from './redux/reducers/ListItemReducer'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Landing } from './pages/Landing'
@@ -6,6 +7,7 @@ import {Login} from './pages/Login'
 import {SignUp} from './pages/SignUp'
 
 function App() {
+  const dispatch = useDispatch()
 
 
   return (
