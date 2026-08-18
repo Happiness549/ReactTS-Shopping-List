@@ -3,7 +3,7 @@ import {Text} from '../UI/Text'
 import { Link }from 'react-router-dom'
 
 export const Sidebar = () => {
-    <Card>
+    <Card className='bg-[#001C44] min-h-screen w-80 rounded-1-4xl'>
         <Text variant={'h1'} className='text-white text-4xl'></Text>
         <div className='flex flex-col pag-10 mt-20'>
             <Text variant={'p'} className='text-white'>Home</Text>
