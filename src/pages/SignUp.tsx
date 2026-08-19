@@ -1,13 +1,13 @@
-import {Card } from '../components/UI/Card'
-import {Text} from '../components/UI/Text'
-import {Input} from '../components/UI/Input'
-import {Button} from '../components/UI/Button'
+import {Card } from '../components/ui/Card'
+import {Text} from '../components/ui/Text'
+import {Input} from '../components/ui/Input'
+import {Button} from '../components/ui/Button'
 import {Link} from 'react-router-dom'
 
 export const SignUp = () => {
 
     return(
-        <Card className='h-200 mt-20 w-200 text-center text-[#001C44] '>
+        <Card className='h-200 mt-20 w-200 text-center ml-50 text-[#001C44] '>
             <Text variant='h1' className='text-4xl '>Create your account </Text>
             <Text variant='h1' className='text-2xl mt-5'>Join shoply and start shopping smarter </Text>
 
