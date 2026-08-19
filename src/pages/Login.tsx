@@ -8,7 +8,7 @@ import {Button} from '../components/ui/Button'
 
 export const Login = () => {
   return (
-    <Card className='h-150 mt-20 w-200'>
+    <Card className='h-full mt-20 w-200 ml-50'>
         
         <Text variant={'h1'} className='text-[#001C44] text-5xl text-center font-bold'> Welcome Back </Text>
         <img 
