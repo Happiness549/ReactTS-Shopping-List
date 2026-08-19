@@ -1,7 +1,7 @@
-import {Card } from '../components/ui/Card'
-import {Text} from '../components/ui/Text'
-import {Input} from '../components/ui/Input'
-import {Button} from '../components/ui/Button'
+import {Card } from '../components/UI/Card'
+import {Text} from '../components/UI/Text'
+import {Input} from '../components/UI/Input'
+import {Button} from '../components/UI/Button'
 import {Link} from 'react-router-dom'
 
 export const SignUp = () => {

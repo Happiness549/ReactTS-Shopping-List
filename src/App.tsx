@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux'
-import {populateLists} from './redux/reducers/ListItemReducer'
+import {populateLists} from './redux/Features/ListItemSlice'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Landing } from './pages/Landing'

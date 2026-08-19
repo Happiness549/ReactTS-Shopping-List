@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { type ReactNode } from 'react'
+import {Card} from '../UI/Card'
+import {Text} from '../UI/Text'
+import type{ListItem} from '../../redux/Features/ListItemSlice'
+
+interface ListCardProps{
+  listItem: ListItem;
+  
+}
 
 
-export const ListCard = () => {
+export const ListCard:React.FC<ListCardProps> = ({listItem}) => {
   return (
-    <div>
-
+    <div className='rounded-4xl  p-6  border border-white/10   shadow-[0_4px_30px_rgba(0,0,0,0.5),_0_1px_3px_rgba(255,255,255,0.1),_0_20px_40px_rgba(99,102,241,0.12)] '>
+      <Text variant={'h2'}>{listItem.title}</Text>
+        <Text variant={'p'}>{listItem.category}</Text>
+        <Text variant={'p'}>{listItem.Quantity}</Text>
+        <Text variant={'p'}>{listItem.notes}</Text>
+  
     </div>
   )
 }

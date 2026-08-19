@@ -13,13 +13,7 @@ export interface ListState{
 };
 
 const initialState: ListState ={
-    list: [{
-        title: "veg",
-        category: "veg",
-        notes: "Buy at shoprite",
-        Quantity: "1kg",
-        id: 1
-    }],
+    list: [],
 }
 
 const ListSlice = createSlice({
@@ -27,7 +21,7 @@ const ListSlice = createSlice({
     initialState,
     reducers: {
         populateLists: (state, action) => {
-            return action.payload
+            state.list.push(action.payload)
         }
     }
 })

@@ -1,5 +1,5 @@
-import {Card} from '../ui/Card'
-import {Text} from '../ui/Text'
+import {Card} from '../UI/Card'
+import {Text} from '../UI/Text'
 import { Link }from 'react-router-dom'
 import { HomeIcon } from 'lucide-react'
 import { ListChecksIcon } from 'lucide-react'

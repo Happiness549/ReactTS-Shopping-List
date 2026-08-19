@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from '../components/ui/Button'
-import { Text } from '../components/ui/Text'
+import { Button } from '../components/UI/Button'
+import { Text } from '../components/UI/Text'
 import {Navbar} from '../components/ShoppingList/Navbar'
 import { ShoppingCartIcon } from 'lucide-react'
 import { Clipboard } from 'lucide-react'
@@ -9,7 +9,7 @@ import { PlusIcon } from 'lucide-react'
 
 export const Home = () => {
   return (
-    <div className='rounded-r-4xl min-h-screen w-310 border border-white/10   shadow-[0_4px_30px_rgba(0,0,0,0.5),_0_1px_3px_rgba(255,255,255,0.1),_0_20px_40px_rgba(99,102,241,0.12)] '>
+    <div className='rounded-r-4xl min-h-screen w-full border border-white/10   shadow-[0_4px_30px_rgba(0,0,0,0.5),_0_1px_3px_rgba(255,255,255,0.1),_0_20px_40px_rgba(99,102,241,0.12)] '>
        
        <Navbar />
 

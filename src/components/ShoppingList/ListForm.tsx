@@ -1,9 +1,10 @@
 import React,{useState} from 'react'
 import {Input} from '../UI/Input'
 import {Text} from '../UI/Text' 
-import type {ListItem} from '../../redux/Features/ListItemReducer'
+import type {ListItem} from '../../redux/Features/ListItemSlice'
 import {useDispatch} from 'react-redux'
-import {populateLists} from '../../redux/Features/ListItemReducer'
+import {populateLists} from '../../redux/Features/ListItemSlice'
+import {Button} from '../UI/Button'
 
 export const ListForm = () =>{
     const dispatch = useDispatch()
@@ -30,15 +31,11 @@ export const ListForm = () =>{
         setCategory('');
         setQuantity('');
         setNotes('');
-
-        
-
     }
-
 
     return(
         <>
-        <form>
+        <form onSubmit={handleSubmit}>
             <Input
             label='Title'
             placeholder='Enter your list title'
@@ -46,8 +43,8 @@ export const ListForm = () =>{
             value={title}
             onChange={(e) => setTitle(e.target.value)}
         />
-            
 
+        <Button text={'Submit'}/>
         </form>
         </>
     )
