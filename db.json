@@ -1,5 +1,39 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Happy",
+      "surname": "Mhlongo",
+      "email": "Happy@gmail.com",
+      "cellNumber": "",
+      "password": "132853",
+      "": "y",
+      "id": "S6v7V3xT-fE"
+    },
+    {
+      "name": "Luvuyo",
+      "surname": "Mhlongo",
+      "email": "luvuo@gmail.com",
+      "cellNumber": "",
+      "password": "ddhfnmfv",
+      "id": "00B5GtJqyzg"
+    },
+    {
+      "name": "",
+      "surname": "",
+      "email": "",
+      "cellNumber": "",
+      "password": "",
+      "id": "T-yz4uI_quA"
+    },
+    {
+      "name": "",
+      "surname": "",
+      "email": "",
+      "cellNumber": "",
+      "password": "",
+      "id": "9lRUKWXQ08w"
+    }
+  ],
   "lists": [
     {
       "category": "Categories",

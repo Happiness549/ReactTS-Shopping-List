@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {createSlice, createAsyncThunk,type PayloadAction} from '@reduxjs/toolkit'
 
 
 export interface UserData{
@@ -10,7 +10,7 @@ export interface UserData{
     password: string;
 }
 
-interface Inputs{
+export interface signupForm{
     name: string;
     surname: string; 
     email: string;
@@ -19,25 +19,26 @@ interface Inputs{
 }
 
 export interface AuthState{
-    users: UserData[];
-    loading: boolean
+    user: UserData | null;
+    signupForm: signupForm;
+    loading: boolean;
     error: string | null;
-    inputs: Inputs;
-   
-
+    success: string | null;
 }
 
 const initialState: AuthState = {
-    users: [],
+    user: null,
     loading: false,
     error: null,
-    inputs: {
+    success: null,
+    signupForm: {
         name: '',
         surname: '',
         email: '',
         cellNumber: '',
         password: ''
-    }
+    },
+    
 }
 
 export const AuthRegistration = createAsyncThunk('auth/registration',
@@ -62,32 +63,49 @@ const signUpSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        updatedField: (state, action) => {
-            const{name, value} = action.payload
-            state.inputs[name] = value;
+        updatedInputField: (state, action: PayloadAction<{
+        field: keyof signupForm;
+        value: string;
+    }>
+) => {
+        state.signupForm[action.payload.field] = action.payload.value;
         },
+
         resetForm: (state) => {
-      state.inputs = { name: '', surname: '', email: '', cellNumber: '', password: '' };
-    }
+      state.signupForm = { 
+        name: '', 
+        surname: '', 
+        email: '', 
+        cellNumber: '', 
+        password: '' 
+    };
     },
+    },
+
     extraReducers: (builder) => {
-        builder.addCase(AuthRegistration.pending, (state) => {
+        builder
+        .addCase(AuthRegistration.pending, (state) => {
             state.loading = true;
             state.error = null;
-        });
-
-        builder.addCase(AuthRegistration.fulfilled, (state) => {
-            state.loading = false;
-        
-        });
-
-        builder.addCase(AuthRegistration.rejected, (state,action) => {
-            state.loading = false;
-            state.error = action.error.message ?? "Failed to add user."
+            state.success = null;
         })
 
-    }
-})
-export const {updatedField, resetForm} = signUpSlice.actions
+        .addCase(AuthRegistration.fulfilled, (state, action) => {
+            state.loading = false;
+            state.success = "Account created successfully"
+            state.user = action.payload
+        
+        })
+
+        .addCase(AuthRegistration.rejected, (state,action) => {
+            state.loading = false;
+            state.error = action.error.message || "SignUp failed.";
+            
+        });
+
+    },
+});
+
+export const {updatedInputField, resetForm} = signUpSlice.actions
 
 export default signUpSlice.reducer

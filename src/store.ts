@@ -9,7 +9,7 @@ const store = configureStore({
     reducer: {
         listItemLists: ListItemReducer,
         lists: listReducer,
-        users: SignupReducer
+        user: SignupReducer
 
     },
      
@@ -17,4 +17,5 @@ const store = configureStore({
 
 
 export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 export default store
