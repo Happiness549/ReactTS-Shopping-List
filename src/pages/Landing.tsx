@@ -1,5 +1,5 @@
 import react from 'react'
-import {Text} from '../components/UI/Text'
+import {Text} from '../components/ui/Text'
 import Shopping from '../assets/Shopping.jpg'
 import Trolley from '../assets/Trolley.webp'
 import { Link } from 'react-router-dom'

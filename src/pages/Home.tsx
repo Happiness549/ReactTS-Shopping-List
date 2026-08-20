@@ -1,10 +1,11 @@
 import React from 'react'
-import { Button } from '../components/UI/Button'
-import { Text } from '../components/UI/Text'
+import { Button } from '../components/ui/Button'
+import { Text } from '../components/ui/Text'
 import {Navbar} from '../components/ShoppingList/Navbar'
 import { ShoppingCartIcon } from 'lucide-react'
 import { Clipboard } from 'lucide-react'
 import { PlusIcon } from 'lucide-react'
+import { ListItemForm } from '../components/ShoppingList/ListItemForm'
 
 
 export const Home = () => {
@@ -32,7 +33,7 @@ export const Home = () => {
 
        </div>
      
-
+      <ListItemForm/>
     </div>
   )
 }

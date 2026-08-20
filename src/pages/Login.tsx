@@ -1,9 +1,9 @@
-import {Card } from '../components/UI/Card'
-import {Text} from '../components/UI/Text'
+import {Card } from '../components/ui/Card'
+import {Text} from '../components/ui/Text'
 import { Link } from 'react-router-dom'
 import Waving from '../assets/Waving.png'
-import {Input} from '../components/UI/Input'
-import {Button} from '../components/UI/Button'
+import {Input} from '../components/ui/Input'
+import {Button} from '../components/ui/Button'
 
 
 export const Login = () => {

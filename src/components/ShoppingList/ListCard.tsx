@@ -1,6 +1,6 @@
 import React, { type ReactNode } from 'react'
-import {Card} from '../UI/Card'
-import {Text} from '../UI/Text'
+import {Card} from '../ui/Card'
+import {Text} from '../ui/Text'
 import type{ListItem} from '../../redux/Features/ListItemSlice'
 
 interface ListCardProps{

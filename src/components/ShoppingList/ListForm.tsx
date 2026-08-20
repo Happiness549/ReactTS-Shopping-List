@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
-import {Input} from '../UI/Input'
-import {Text} from '../UI/Text' 
+import {Input} from '../ui/Input'
+import {Text} from '../ui/Text' 
 import type {ListItem} from '../../redux/Features/ListItemSlice'
 import {useDispatch} from 'react-redux'
 import {populateLists} from '../../redux/Features/ListItemSlice'
-import {Button} from '../UI/Button'
+import {Button} from '../ui/Button'
 
 export const ListForm = () =>{
     const dispatch = useDispatch()

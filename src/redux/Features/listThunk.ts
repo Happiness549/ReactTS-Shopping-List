@@ -3,7 +3,7 @@ import type { ShoppingList } from "./ListSlice";
 
 export const addList = createAsyncThunk("lists/addList",
     async(newList: Omit<ShoppingList, "id">) =>{
-        const response = await fetch("http:localhost:3000/lists",
+        const response = await fetch("http://localhost:3000/lists",
             {
                 method: "POST",
                 headers: {

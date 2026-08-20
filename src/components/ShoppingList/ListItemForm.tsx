@@ -1,12 +1,43 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Text } from '../ui/Text'
 import { Input } from '../ui/Input'
+import { Button } from '../ui/Button'
+import { useDispatch } from 'react-redux'
+import { addList } from '../../redux/Features/listThunk'
 
 export const ListItemForm = () => {
-  return (
-    <div>
+    const dispatch = useDispatch<any>();
 
+    const [category, setCategory] = useState('');
+    
+
+    const handleSubmit =(e: React.FormEvent) => {
         
-    </div>
+        e.preventDefault()
+
+        dispatch(
+            addList({
+                category,
+                numberOfItem: 0,
+                completed: 0,
+            })
+        );
+        setCategory('');
+    
+    }
+  return (
+
+     <form onSubmit={handleSubmit}>
+                <Input
+                label='Title'
+                placeholder='Enter your list title'
+                type='text'
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+            />
+            
+            <Button text={'Create List'}/>
+            </form>
+
   )
 }
