@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addList } from "./listThunk";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
 
 export interface ShoppingList{
     id: number;
@@ -20,10 +21,32 @@ const initialState: ListState ={
     error: null,
 }
 
+// get list from db
+export const addList = createAsyncThunk("lists/addList",
+    async(newList: Omit<ShoppingList, "id">) =>{
+        const response = await fetch("http://localhost:3000/lists",
+            {
+                method: "POST",
+                headers: {
+                    "Contene-Type": "application/json",
+                },
+                body: JSON.stringify(newList),
+            } );
+                
+            if(!response.ok){
+            throw new Error("Failed to add list");
+        }
+        const data =await response.json();
+        return data; 
+        }
+
+    
+);
+
 const listSlice = createSlice({
     name: "lists",
     initialState,
-    reducers: {},
+    reducers: {},  
     extraReducers: (builder) =>{
     builder.addCase(addList.pending, (state) => {
         state.loading =true;

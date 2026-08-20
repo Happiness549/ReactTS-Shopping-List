@@ -1,5 +1,18 @@
 {
   "users": [],
-  "lists": []
-  
+  "lists": [
+    {
+      "category": "Categories",
+      "numberOfItem": 0,
+      "completed": 0,
+      "id": "mc8-Dvmz2fM"
+    },
+    {
+      "category": "jkgfytdrueu6e5",
+      "numberOfItem": 0,
+      "completed": 0,
+      "id": "ykLrHDlNtj8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

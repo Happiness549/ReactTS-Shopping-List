@@ -3,7 +3,7 @@ import { Text } from '../ui/Text'
 import { Input } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { useDispatch } from 'react-redux'
-import { addList } from '../../redux/Features/listThunk'
+import { addList } from '../../redux/Features/ListSlice'
 
 export const ListItemForm = () => {
     const dispatch = useDispatch<any>();
