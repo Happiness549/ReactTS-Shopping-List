@@ -36,8 +36,8 @@ export const addList = createAsyncThunk("lists/addList",
             if(!response.ok){
             throw new Error("Failed to add list");
         }
-        const data =await response.json();
-        return data; 
+        const listData =await response.json();
+        return listData; 
         }
 
     

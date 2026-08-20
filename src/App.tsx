@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Landing } from './pages/Landing'
 import {Login} from './pages/Login'
 import {SignUp} from './pages/SignUp'
-import {ShoppingList} from './components/ShoppingList/ShoppingList'
+// import {ShoppingList} from './components/ShoppingList/ShoppingList'
 import { MainLayout } from './components/ShoppingList/MainLayout'
 import { Home } from './pages/Home'
 
