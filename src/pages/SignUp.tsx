@@ -10,11 +10,11 @@ import type { RootState, AppDispatch } from '../store'
 
 export const SignUp = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const {signupForm, loading, error,success} = useSelector((state: RootState) => state.user);
+    const {signupForm, loading, error,success, } = useSelector((state: RootState) => state.user);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(updatedInputField({
-            field: e.target.name as "name" | "surname"| "email" | "password" | "cellNumber",
+            field: e.target.name as "name" | "surname"| "email" | "password" | "confirmPassword" | "cellNumber",
             value: e.target.value
         })
     );
@@ -69,15 +69,15 @@ export const SignUp = () => {
                 onChange= {handleChange}
                 placeholder='password'
                 />
-               {/* <Input
-                id="confirm password"
+                <Input
+                
                 label='confirm password'
                 type='confirm password'
                 name="confirm password"
-                value={Input.ConfirmPassword}
+                value={signupForm.confirmPassword}
                 onChange= {handleChange}
                 placeholder=' Confirm password'
-                /> */}
+                /> 
                 
                 
                 <Button text='Create Account'

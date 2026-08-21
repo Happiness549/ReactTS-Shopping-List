@@ -8,6 +8,7 @@ export interface UserData{
     email: string;
     cellNumber: string;
     password: string;
+    confirmPassword: string;
 }
 
 export interface signupForm{
@@ -16,6 +17,7 @@ export interface signupForm{
     email: string;
     cellNumber: string;
     password: string;
+    confirmPassword: string;
 }
 
 export interface AuthState{
@@ -36,7 +38,8 @@ const initialState: AuthState = {
         surname: '',
         email: '',
         cellNumber: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     },
     
 }
@@ -77,7 +80,8 @@ const signUpSlice = createSlice({
         surname: '', 
         email: '', 
         cellNumber: '', 
-        password: '' 
+        password: '',
+        confirmPassword: ''
     };
     },
     },
@@ -100,7 +104,7 @@ const signUpSlice = createSlice({
         .addCase(AuthRegistration.rejected, (state,action) => {
             state.loading = false;
             state.error = action.error.message || "SignUp failed.";
-            
+
         });
 
     },
