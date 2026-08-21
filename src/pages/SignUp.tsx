@@ -60,6 +60,18 @@ export const SignUp = () => {
                 onChange= {handleChange}
                 placeholder='Enter email'
                 />
+
+                
+                
+                <Input
+                label='Cell Number'
+                type='cell number'
+                name="cellNumber"
+                value={signupForm.cellNumber}
+                onChange= {handleChange}
+                placeholder='Enter phone number'
+                /> 
+                
                 
                 <Input
                 label='password'
@@ -70,16 +82,7 @@ export const SignUp = () => {
                 placeholder='password'
                 />
                 
-                {/* <Input
                 
-                label='confirm password'
-                type='confirm password'
-                name="confirm password"
-                value={signupForm.confirmPassword}
-                onChange= {handleChange}
-                placeholder=' Confirm password'
-                /> 
-                 */}
                 
                 <Button text='Create Account'
                 className='w-100 ml-9'/>

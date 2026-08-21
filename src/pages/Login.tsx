@@ -1,47 +1,118 @@
-import {Card } from '../components/ui/Card'
-import {Text} from '../components/ui/Text'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import type { ChangeEvent, FormEvent } from "react";
+import { Link } from "react-router-dom";
+import type { RootState, AppDispatch } from "../store";
+import { updatedInputField } from "../redux/Features/SignupSlice";
+import { loginUser } from "../redux/Features/LoginSlice";
+import {Input} from "../components/ui/Input";
+import {Card} from "../components/ui/Card";
+import {Text} from "../components/ui/Text";
+import {Button} from "../components/ui/Button";
 import Waving from '../assets/Waving.png'
-import {Input} from '../components/ui/Input'
-import {Button} from '../components/ui/Button'
-
 
 export const Login = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const signupForm = useSelector(
+    (state: RootState) => state.user.signupForm
+  );
+
+  const { loading, error, success } = useSelector(
+    (state: RootState) => state.login
+  );
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    dispatch(
+      updatedInputField({
+        field: e.target.name as keyof typeof signupForm,
+        value: e.target.value,
+      })
+    );
+  };
+
+  const handleSubmit = (
+    e: FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    dispatch(loginUser());
+  };
+
   return (
-    <Card className='h-full mt-20 w-200 ml-50'>
-        
-        <Text variant={'h1'} className='text-[#001C44] text-5xl text-center font-bold'> Welcome Back </Text>
+    <Card  className='h-full mt-20 w-200 ml-50'>
+       <Text variant={'h1'} className='text-[#001C44] text-5xl text-center font-bold'> Welcome Back </Text>
         <img 
           src={Waving} 
           alt="Shopping Bag " 
           className="w-14 h-auto object-contain rounded-lg ml-140 -mt-15"
         />
-         <Text variant={'h1'} className='text-[#001C44] text-2xl text-center mt-9'> Login to your page </Text>
+        <Text variant={'h1'} className='text-[#001C44] text-2xl text-center mt-9'> Login to your page </Text>
+      <form onSubmit={handleSubmit} className='mt-15 text-center flex flex-col gap-8 items-start'>
+        
+        <Input
+          type="email"
+          name="email"
+          label="Email"
+           placeholder='@example.com'
+          value={signupForm.email}
+          onChange={handleChange}
+        />
 
-         <form className='mt-15 text-center flex flex-col gap-8 items-start'>
-            <Input
-               placeholder='@example.com'
-               
-            />
-            <Input
-              placeholder='Password'
-            />
-         </form>
-         <div className='flex gap-35 ml-58'>
-            <Text variant={'p'} >remember me</Text>
+        <Input
+          type="password"
+          name="password"
+          label="Password"
+          placeholder="Enter your password"
+          value={signupForm.password}
+          onChange={handleChange}
+        />
+
+           <div className='flex gap-35 ml-46'>
+            <Text variant={'p'} >Remember me</Text>
              <Text variant={'p'} className='text-[#0C5776]'>Forgot password?</Text>
          </div>
-         <Button
-         text={'Login'}
-         className='text-white mt-10 w-100 ml-50'
-         />
-         <div className='flex gap-29 ml-58 mt-5'>
-              <Text variant={'p'}>Don't have an account? </Text>
-              <Text variant={'p'} className='text-[#0C5776]'><Link to='/signup'>Create one</Link> </Text>
-         </div>
 
-       
-    
+        <Button
+          text={loading ? "Logging in..." : "Login"}
+          className="text-white -mt-4 w-100 ml-40"
+        />
+
+        <div className="flex gap-29 -mt-4 ml-45 ">
+          <Text variant="p">
+            Don't have an account?
+          </Text>
+
+          <Text
+            variant="p"
+            className="text-[#0C5776]"
+          >
+            <Link to="/signup">
+              Create one
+            </Link>
+          </Text>
+        </div>
+
+        {error && (
+          <Text
+            variant="p"
+            className="text-red-500 ml-60"
+          >
+            {error}
+          </Text>
+        )}
+
+        {success && (
+          <Text
+            variant="p"
+            className="text-green-500 mt-3"
+          >
+            {success}
+          </Text>
+        )}
+
+      </form>
     </Card>
-  )
-}
+  );
+};
