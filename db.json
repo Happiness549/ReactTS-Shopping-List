@@ -1,13 +1,14 @@
 {
   "users": [
     {
-      "name": "",
-      "surname": "",
-      "email": "",
+      "name": "Siyamthand",
+      "surname": "GWAMANDA",
+      "email": "mhlongohappiness880@gmail.com",
       "cellNumber": "",
-      "password": "",
-      "id": "xRqa57PBlnU"
+      "password": "BNGFSEFLKNIRLOGIHE",
+      "id": "yqG6de5OXjo"
     }
   ],
+  "lists": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

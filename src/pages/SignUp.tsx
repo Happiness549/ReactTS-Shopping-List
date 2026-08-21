@@ -14,7 +14,7 @@ export const SignUp = () => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(updatedInputField({
-            field: e.target.name as "name" | "surname"| "email" | "password" | "confirmPassword" | "cellNumber",
+            field: e.target.name as "name" | "surname"| "email" | "password"  | "cellNumber",
             value: e.target.value
         })
     );
@@ -69,7 +69,8 @@ export const SignUp = () => {
                 onChange= {handleChange}
                 placeholder='password'
                 />
-                <Input
+                
+                {/* <Input
                 
                 label='confirm password'
                 type='confirm password'
@@ -78,7 +79,7 @@ export const SignUp = () => {
                 onChange= {handleChange}
                 placeholder=' Confirm password'
                 /> 
-                
+                 */}
                 
                 <Button text='Create Account'
                 className='w-100 ml-9'/>
