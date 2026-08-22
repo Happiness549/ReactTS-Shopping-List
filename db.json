@@ -33,6 +33,14 @@
       "id": "bmtPX-0myLE"
     }
   ],
-  "lists": [],
+  "lists": [
+    {
+      "category": "Birthday Shopping",
+      "numberOfItem": 0,
+      "completed": 0,
+      "userId": "bmtPX-0myLE",
+      "id": "t72QLrMSpdU"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

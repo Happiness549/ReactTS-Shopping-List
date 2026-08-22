@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from '../components/ui/Button'
 import { Text } from '../components/ui/Text'
 import {Navbar} from '../components/ShoppingList/Navbar'
@@ -6,12 +6,17 @@ import { ShoppingCartIcon } from 'lucide-react'
 import { Clipboard } from 'lucide-react'
 import { PlusIcon } from 'lucide-react'
 import { ListItemForm } from '../components/ShoppingList/ListItemForm'
-import { useSelector } from 'react-redux'
-import type { RootState } from '../store'
-
+import { useDispatch, useSelector } from 'react-redux'
+import type { AppDispatch, RootState } from '../store'
+import { fetchLists } from '../redux/Features/ListSlice'
 
 export const Home = () => {
   const userData = useSelector((state:RootState) =>  (state.login as any)?.user);
+  const dispatch = useDispatch<AppDispatch>();
+  const lists = useSelector((state: RootState)=> state.lists.lists)
+  useEffect(() =>{
+    dispatch(fetchLists())
+  }, [dispatch])
 
 
   return (

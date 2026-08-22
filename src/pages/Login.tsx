@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { ChangeEvent, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { RootState, AppDispatch } from "../store";
 import { updatedInputField } from "../redux/Features/SignupSlice";
 import { loginUser } from "../redux/Features/LoginSlice";
@@ -12,6 +12,7 @@ import Waving from '../assets/Waving.png'
 
 export const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const signupForm = useSelector(
     (state: RootState) => state.user.signupForm
@@ -32,9 +33,13 @@ export const Login = () => {
     );
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(loginUser());
+    const result = await dispatch(loginUser());
+    if(loginUser.fulfilled.match(result)){
+      navigate("/home")
+    }
+    
   };
 
   return (
