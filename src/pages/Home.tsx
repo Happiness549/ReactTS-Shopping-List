@@ -6,14 +6,20 @@ import { ShoppingCartIcon } from 'lucide-react'
 import { Clipboard } from 'lucide-react'
 import { PlusIcon } from 'lucide-react'
 import { ListItemForm } from '../components/ShoppingList/ListItemForm'
-
+import { useSelector } from 'react-redux'
+import type { RootState } from '../store'
 
 
 export const Home = () => {
+  const userData = useSelector((state:RootState) =>  (state.login as any)?.user);
+
+
   return (
     <div className='rounded-r-4xl min-h-screen w-full border border-white/10   shadow-[0_4px_30px_rgba(0,0,0,0.5),_0_1px_3px_rgba(255,255,255,0.1),_0_20px_40px_rgba(99,102,241,0.12)] '>
        
        <Navbar />
+       <Text variant='p'>Welcome {userData?.name}</Text>
+
 
        <div className='flex'>
         <div className='rounded-full h-40 w-40 ml-130 mt-30 bg-[#BCFEFE] '>

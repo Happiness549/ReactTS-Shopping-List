@@ -23,39 +23,39 @@ const initialState: LoginState = {
 export const loginUser = createAsyncThunk(
   "login/loginUser",
 
+
   async (_, { getState, rejectWithValue }) => {
+      
     try {
+          const state = getState() as RootState;
+          const email = state.user.signupForm.email;
+          const password = state.user.signupForm.password;
       
-      const state = getState() as RootState;
 
-      
-      const email = state.user.signupForm.email;
-      const password = state.user.signupForm.password;
-
-      if (!email || !password) {
-        return rejectWithValue(
-          "Please enter your email and password"
-        );
+          if (!email || !password) {
+            return rejectWithValue(
+            "Please enter your email and password"
+            );
       }
 
-      const response = await fetch(
-        `http://localhost:3000/users?email=${encodeURIComponent(
-          email
-        )}&password=${encodeURIComponent(password)}`
-      );
+          const response = await fetch(
+            `http://localhost:3000/users?email=${encodeURIComponent(
+              email
+            )}&password=${encodeURIComponent(password)}`
+          );
 
-      if (!response.ok) {
-        throw new Error("Failed to login");
-      }
+          if (!response.ok) {
+            throw new Error("Failed to login");
+          }
 
-      const users: UserData[] = await response.json();
+          const users: UserData[] = await response.json();
 
-    
-      if (users.length === 0) {
-        return rejectWithValue(
-          "Invalid email or password"
-        );
-      }
+        
+          if (users.length === 0) {
+            return rejectWithValue(
+              "Invalid email or password"
+            );
+          }
 
     
       return users[0];

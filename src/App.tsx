@@ -1,5 +1,5 @@
 import {useDispatch} from 'react-redux'
-import {populateLists} from './redux/Features/ListItemSlice'
+// import {populateLists} from './redux/Features/ListItemSlice'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Landing } from './pages/Landing'
@@ -8,6 +8,7 @@ import {SignUp} from './pages/SignUp'
 // import {ShoppingList} from './components/ShoppingList/ShoppingList'
 import { MainLayout } from './components/ShoppingList/MainLayout'
 import { Home } from './pages/Home'
+import { ProtectedRoute } from './components/ShoppingList/ProtectedRoute'
 
 function App() {
   const dispatch = useDispatch()
@@ -24,6 +25,11 @@ function App() {
       
 
       <Route element={<MainLayout/>}>
+
+      <Route element={<ProtectedRoute/>}>
+       <Route path='/home' element={<Home/>}/>
+
+      </Route>
       <Route path='/home' element={<Home/>}/>
 
       </Route>

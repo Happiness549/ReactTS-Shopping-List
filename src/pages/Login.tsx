@@ -32,11 +32,8 @@ export const Login = () => {
     );
   };
 
-  const handleSubmit = (
-    e: FormEvent<HTMLFormElement>
-  ) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     dispatch(loginUser());
   };
 
