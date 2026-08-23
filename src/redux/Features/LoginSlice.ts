@@ -1,6 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
 import type { UserData } from './SignupSlice';
+import { saveUser, getUser,removeUser } from '../../utils/localStorage'; 
 
 interface LoginState {
   userData: UserData | null;
@@ -10,30 +11,25 @@ interface LoginState {
 }
 
 const initialState: LoginState = {
-  userData: null,
+  userData: getUser(),
   loading: false,
   error: null,
   success: null,
 };
 
-// Fixed syntax errors and added an optional arg parameter if you want to pass credentials directly
+
 export const loginUser = createAsyncThunk(
   'login/loginUser',
   async (_, { getState, rejectWithValue }) => {
     try {
       const state = getState() as RootState;
-      
-      // CRITICAL NOTE: Ensure state.user.signupForm is where your active login inputs are stored.
       const email = state.user.signupForm.email;
       const password = state.user.signupForm.password;
-
-      console.log('Response status email:', email);
-      console.log('Response status password:', password);
 
       if (!email || !password) {
         return rejectWithValue('Please enter your email and password');
       }
-// 1. Fetch only by email to prevent URL parameter type bugs
+
 const response = await fetch(
   `http://localhost:3000/users?email=${encodeURIComponent(email)}`
 );
@@ -43,22 +39,22 @@ if (!response.ok) {
 }
 
 const users: UserData[] = await response.json();
-console.log('Users found with this email:', users);
+
 
 if (users.length === 0) {
   return rejectWithValue('User with this email does not exist');
 }
 
-// 2. Safely verify password, handling both string "123456" and number 123456
+
 const foundUser = users[0];
 const inputPassword = String(password).trim();
-const dbPassword = String(foundUser.password).trim(); // assuming key name is 'password'
+const dbPassword = String(foundUser.password).trim(); 
 
 if (inputPassword !== dbPassword) {
   return rejectWithValue('Invalid password');
 }
 
-// 3. Return the specific user object, not the whole array
+
 return foundUser; 
 
     } catch (error) {
@@ -94,6 +90,7 @@ const LoginSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.userData = action.payload;
+        saveUser(action.payload);
         state.success = 'Login successful!';
         state.error = null;
       })

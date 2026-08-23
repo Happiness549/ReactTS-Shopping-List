@@ -9,7 +9,7 @@ import LoginReducer from './redux/Features/LoginSlice'
 const store = configureStore({
     reducer: {
         listItemLists: ListItemReducer,
-        lists: listReducer,
+        list: listReducer,
         user: SignupReducer,
         login: LoginReducer,
 

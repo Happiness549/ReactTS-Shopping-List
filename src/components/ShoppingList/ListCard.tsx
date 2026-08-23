@@ -1,22 +1,27 @@
 import React, { type ReactNode } from 'react'
 import {Card} from '../ui/Card'
 import {Text} from '../ui/Text'
-import type{ListItem} from '../../redux/Features/ListItemSlice'
+import type { ShoppingList } from '../../redux/Features/ListSlice'
+import { Button } from '../ui/Button'
+import { DeleteIcon } from 'lucide-react'
+
 
 interface ListCardProps{
-  listItem: ListItem;
+  shoppingList: ShoppingList;
   
 }
 
-
-export const ListCard:React.FC<ListCardProps> = ({listItem}) => {
+export const ListCard:React.FC<ListCardProps> = ({shoppingList}) => {
   return (
-    <div className='rounded-4xl  p-6  border border-white/10   shadow-[0_4px_30px_rgba(0,0,0,0.5),_0_1px_3px_rgba(255,255,255,0.1),_0_20px_40px_rgba(99,102,241,0.12)] '>
-      <Text variant={'h2'}>{listItem.title}</Text>
-        <Text variant={'p'}>{listItem.category}</Text>
-        <Text variant={'p'}>{listItem.Quantity}</Text>
-        <Text variant={'p'}>{listItem.notes}</Text>
-  
+    <div className=''>
+      <div className='rounded-4xl p-8 mt-5  w-70 h-50 border border-gray-300 xl'>
+      <Text variant={'h2'} className='font-bold text-2xl text-[#001C44]'>{shoppingList.category}</Text>
+        <Text variant={'p'} className='p-2 text-[#001C44]'>{shoppingList.numberOfItem}items</Text>
+        <Text variant={'p'} className='text-[#001C44]'>{shoppingList.completed}completed</Text>
     </div>
+    <Button text='' className='absolute h-12 w-12 -mt-47 ml-40 bg-red-300 rounded-full'/>
+    
+    </div>
+    
   )
 }

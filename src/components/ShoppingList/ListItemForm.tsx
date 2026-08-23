@@ -5,13 +5,17 @@ import { Button } from '../ui/Button'
 import { useDispatch } from 'react-redux'
 import { addList } from '../../redux/Features/ListSlice'
 
+
+
 export const ListItemForm = () => {
+    
+
     const dispatch = useDispatch<any>();
 
     const [category, setCategory] = useState('');
     const handleSubmit =(e: React.FormEvent) => {
         
-        e.preventDefault()
+        e.preventDefault();
 
         dispatch(
             addList({
