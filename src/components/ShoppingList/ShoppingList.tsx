@@ -14,6 +14,7 @@
 
  export const ShoppingList=() => {
     const lists = useSelector((state: RootState) => state.list.shoppingList);
+    const userData = useSelector((state: RootState) => state.login.userData)
     
 
     return(
@@ -21,6 +22,7 @@
        {lists.length === 0 ? (
   <>
     <div className="flex" >
+      <Text variant={'h1'} className='font-bold text-3xl'>Welcome: {userData?.name}</Text>
       <div className="rounded-full h-40 w-40 ml-130 mt-30 bg-[#BCFEFE]">
       <Clipboard size={120} className="mt-5 ml-5 text-[#2D99AE]"/>
       </div>

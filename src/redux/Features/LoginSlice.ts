@@ -65,6 +65,30 @@ return foundUser;
   }
 );
 
+export const updateUser = createAsyncThunk("login/updateUser",
+  async(updatedUser: UserData, {rejectWithValue}) => {
+    try{
+      const response = await fetch(`http://localhost:3000/users/${updatedUser.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(updatedUser)
+        });
+        if(!response.ok){
+          throw new Error("Failed to update profile");
+        }
+        const user: UserData = await response.json();
+        return user;
+    }catch(error) {
+      return rejectWithValue(error instanceof Error
+        ? error.message : "Something went wrong"
+      )
+    }
+  }
+);
+
 const LoginSlice = createSlice({
   name: 'login',
   initialState,
@@ -99,7 +123,21 @@ const LoginSlice = createSlice({
         state.error = (action.payload as string) || 'Invalid email or password';
         state.success = null;
         state.userData = null;
-      });
+      })
+
+      .addCase(updateUser.pending,(state)=>{
+        state.loading = true;
+        state.error = null;
+        state.success =null
+      })
+      .addCase(updateUser.fulfilled,(state,action)=>{
+        state.loading =false;
+        state.userData =action.payload;
+        saveUser(action.payload);
+        state.success = "Profile updated successfully!";
+        state.error = (action.payload as any) || "Failed to update profile";
+        state.success = null;
+      })
   },
 });
 
