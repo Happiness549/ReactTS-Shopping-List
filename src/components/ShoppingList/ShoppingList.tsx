@@ -6,8 +6,10 @@
  import { Clipboard } from 'lucide-react'
  import { PlusIcon } from 'lucide-react'
  import { Button } from '../ui/Button'
-import { Text } from '../ui/Text'
-import { Card } from '../ui/Card'
+ import { Text } from '../ui/Text'
+ import { Card } from '../ui/Card'
+
+
  
 
  export const ShoppingList=() => {
@@ -18,7 +20,7 @@ import { Card } from '../ui/Card'
        <>
        {lists.length === 0 ? (
   <>
-    <div className="flex">
+    <div className="flex" >
       <div className="rounded-full h-40 w-40 ml-130 mt-30 bg-[#BCFEFE]">
       <Clipboard size={120} className="mt-5 ml-5 text-[#2D99AE]"/>
       </div>
@@ -37,7 +39,7 @@ import { Card } from '../ui/Card'
     {lists.map((listItem) => (
       <ListCard
         key={listItem.id}
-        shoppingList={listItem}
+        shoppingList={listItem} 
       /> 
     ))}
 

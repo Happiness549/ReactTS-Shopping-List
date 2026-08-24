@@ -13,6 +13,7 @@ import { list } from 'postcss'
 interface ListCardProps{
   shoppingList: ShoppingList;
   
+  
 }
 
 
@@ -26,9 +27,9 @@ export const ListCard:React.FC<ListCardProps> = ({shoppingList}) => {
     dispatch(deleteList(shoppingList.id));
   };
 
-  // const handleCardClick = () => {
-  //   navigate(`/lists/${shoppingList.id}`);
-  // }
+  //  const handleCardClick = () => {
+  //    navigate(`/lists/${shoppingList.id}`);
+  //  }
 
   return (
     <div className=''>
