@@ -28,10 +28,8 @@ function App() {
 
       <Route element={<ProtectedRoute/>}>
        <Route path='/home' element={<Home/>}/>
-
       </Route>
-      <Route path='/home' element={<Home/>}/>
-
+      <Route path='/home' element={<Home/>}/> 
       </Route>
     </Routes>
     </BrowserRouter>

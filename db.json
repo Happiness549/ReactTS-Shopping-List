@@ -17,56 +17,6 @@
       "id": "bmtPX-0myLE"
     }
   ],
-  "lists": [
-    {
-      "category": "Party",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "zgvt7yLvQ68"
-    },
-    {
-      "category": "categories",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "2cVvTtvcC3s"
-    },
-    {
-      "category": "Happy Party",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "DnMjzhu2eNM",
-      "id": "UVK6XqEN34E"
-    },
-    {
-      "category": "",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "DnMjzhu2eNM",
-      "id": "VQG5hIo2vs4"
-    },
-    {
-      "category": "",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "DnMjzhu2eNM",
-      "id": "aloVzImUe2c"
-    },
-    {
-      "category": "",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "DnMjzhu2eNM",
-      "id": "Ynb3CyLif5s"
-    },
-    {
-      "category": "",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "kPCCfJLkLEE"
-    }
-  ],
+  "lists": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

@@ -12,8 +12,7 @@ import { Card } from '../ui/Card'
 
  export const ShoppingList=() => {
     const lists = useSelector((state: RootState) => state.list.shoppingList);
-    const deleteItem = useSelector((state:RootState) => state.list.shoppingList)
-    console.log("Bye List:", lists)
+    
 
     return(
        <>

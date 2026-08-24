@@ -6,6 +6,7 @@ import { useDispatch} from 'react-redux'
 import type { AppDispatch} from '../store'
 import { fetchLists } from '../redux/Features/ListSlice'
 
+
 export const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
   
@@ -20,6 +21,7 @@ export const Home = () => {
        <div className='ml-10'>
        <ShoppingList />
        <ListItemForm/>
+       
        </div>
      
       

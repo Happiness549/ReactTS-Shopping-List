@@ -95,7 +95,7 @@ export const deleteList = createAsyncThunk('lists/deleteLists',
     if(!list || list.userId !== deleteUserId){
       throw new Error("You are not allowed to delete this list");
     }
-    const response = await fetch(`http://localhost:3000/list/${listId}`,
+    const response = await fetch(`http://localhost:3000/lists/${listId}`,
       {
         method: "DELETE",
       }
@@ -149,6 +149,7 @@ const listSlice = createSlice({
       .addCase(deleteList.fulfilled,(state, action) => {
         state.loading = false;
         state.shoppingList.filter((list) => list.id !== action.payload);
+        // state.shoppingList = state.shoppingList.filter((list) => list.id !== action.payload);
       })
       .addCase(deleteList.rejected, (state, action) =>{
         state.error = action.payload as string || "Failed to delete list";
