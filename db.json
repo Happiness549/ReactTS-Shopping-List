@@ -15,24 +15,25 @@
       "cellNumber": "0781678950",
       "password": "123456",
       "id": "bmtPX-0myLE"
+    },
+    {
+      "name": "Sabelo",
+      "surname": "Gumede",
+      "email": "sabelo@mlab.co.za",
+      "cellNumber": "0734567896",
+      "password": "1234567",
+      "id": "_AuEegJrSdg"
     }
   ],
   "lists": [
     {
-      "category": "Category",
+      "category": "Party",
       "numberOfItem": 0,
       "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "auq17i_X-jo"
-    },
-    {
-      "category": "grocery",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "73KKmfwhmWo"
+      "userId": "_AuEegJrSdg",
+      "id": "hqb3uuCJFeE"
     }
   ],
-  "listItem":[],
+  "listItem": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

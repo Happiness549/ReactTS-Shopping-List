@@ -1,5 +1,4 @@
 import React,{useState} from 'react'
-import { Text } from '../ui/Text'
 import { Input } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { useDispatch } from 'react-redux'
@@ -8,12 +7,10 @@ import { addList } from '../../redux/Features/ListSlice'
 
 
 export const ListItemForm = () => {
-    
-
     const dispatch = useDispatch<any>();
 
     const [category, setCategory] = useState('');
-    
+
     const handleSubmit =(e: React.FormEvent) => {
         
         e.preventDefault();

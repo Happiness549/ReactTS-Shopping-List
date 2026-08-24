@@ -1,9 +1,6 @@
 import React,{useState} from 'react'
 import {Input} from '../ui/Input'
-import {Text} from '../ui/Text' 
-import type {ListItem} from '../../redux/Features/ListItemSlice'
 import {useDispatch} from 'react-redux'
-import {populateLists} from '../../redux/Features/ListItemSlice'
 import {Button} from '../ui/Button'
 import {listItemThunk} from '../../redux/Features/ListItemSlice'
 
@@ -19,12 +16,9 @@ export const ListForm = () =>{
 
     const handleSubmit =(e: React.FormEvent) => {
         e.preventDefault()
-        dispatch(listItemThunk ({
-            title,
-            category,
-            Quantity,
-            notes
-        }));
+        dispatch(listItemThunk ({// title,category, Quantity, notes
+            })
+        );
 
         setTitle('');
         setCategory('');
@@ -44,10 +38,10 @@ export const ListForm = () =>{
         />
 
             <Input
-            label='Title'
+            label='Category'
             placeholder='Enter your list title'
             type='text'
-            value={title}
+            value={category}
             onChange={(e) => setCategory(e.target.value)}
         />
         
@@ -55,7 +49,7 @@ export const ListForm = () =>{
             label='Title'
             placeholder='Enter your list title'
             type='text'
-            value={title}
+            value={Quantity}
             onChange={(e) => setQuantity(e.target.value)}
         />
         
@@ -63,7 +57,7 @@ export const ListForm = () =>{
             label='Title'
             placeholder='Enter your list title'
             type='text'
-            value={title}
+            value={notes}
             onChange={(e) => setNotes(e.target.value)}
         />
         

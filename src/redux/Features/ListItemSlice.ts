@@ -45,9 +45,7 @@ const ListSlice = createSlice({
     name: "lists",
     initialState,
     reducers: {}
-},
-
-);
+});
 
 
 
