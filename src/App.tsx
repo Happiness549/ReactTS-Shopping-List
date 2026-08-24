@@ -10,6 +10,7 @@ import { MainLayout } from './components/ShoppingList/MainLayout'
 import { Home } from './pages/Home'
 import { ProtectedRoute } from './components/ShoppingList/ProtectedRoute'
 import {ListItems} from './components/ShoppingList/ListItems'
+import {Profile} from './pages/Profile'
 
 
 function App() {
@@ -25,9 +26,11 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />}/>
       <Route path='/list/:id' element={<ListItems/>}/>
+     
       
 
       <Route element={<MainLayout/>}>
+      <Route path='/profile' element={<Profile/>}/>
 
       <Route element={<ProtectedRoute/>}>
        <Route path='/home' element={<Home/>}/>

@@ -7,6 +7,7 @@ import { TagsIcon } from 'lucide-react'
 import { SettingsIcon } from 'lucide-react'
 import { LogOutIcon } from 'lucide-react'
 import { ShoppingCartIcon } from 'lucide-react'
+import { CircleUser } from 'lucide-react';
 
 export const Sidebar = () => {
 
@@ -24,6 +25,7 @@ export const Sidebar = () => {
                 <SettingsIcon />
                 <TagsIcon/>
                 <LogOutIcon />
+                <CircleUser />
             </div>
         
         
@@ -46,6 +48,9 @@ export const Sidebar = () => {
            
            <Link to=''>
             <Text variant={'p'} className='text-white'>Logout</Text>
+           </Link>
+            <Link to='/Profile'>
+            <Text variant={'p'} className='text-white'>Profile</Text>
            </Link>
            
 
