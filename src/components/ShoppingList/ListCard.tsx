@@ -11,10 +11,9 @@ import { list } from 'postcss'
 
 
 interface ListCardProps{
-  shoppingList: ShoppingList;
-  
-  
+  shoppingList: ShoppingList; 
 }
+
 
 
 export const ListCard:React.FC<ListCardProps> = ({shoppingList}) => {
