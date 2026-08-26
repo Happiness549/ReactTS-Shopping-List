@@ -8,7 +8,7 @@ export interface ListItem{
     Quantity: number;
     image?: string;
     id?: number;
-    listId?: string;
+    listId?: number;
 }
 
 export interface ListState{
@@ -28,11 +28,16 @@ export const fetchListItems = createAsyncThunk("items/fetchListItems",
         
         try{
             const response = await fetch("http://localhost/3000/itemList?listId=${listId}");
-            if(!response.ok) throw new Error("Failed to fetch list items");
-                return(await response.json() as ListItem[]);
+            if(!response.ok){
+                throw new Error("Failed to fetch list items");
+            } 
+            const data: ListItem[] = await response.json();
+                return data
                 
-            }catch(err:any){
-                return rejectWithValue(err.message)
+            }catch(error){
+                return rejectWithValue(
+                    error instanceof Error ? error.message : "Message went wrong"
+                );
         }
     }
     );
@@ -42,14 +47,20 @@ export const fetchListItems = createAsyncThunk("items/fetchListItems",
         async(newItemData, {rejectWithValue}) =>{
             try{
                 const response = await fetch(`http:localhost/3000/itemList`, {
-                    method: 'Post', 
+                    method: 'POST', 
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(newItemData),
                 });
-                if(!response.ok) throw new Error('Failed to add item');
-                return (await response.json()) as ListItem;
-            } catch (error: any) {
-                return rejectWithValue(error.message);
+                if(!response.ok){
+                   throw new Error('Failed to add item');
+                } 
+                const data : ListItem = await response.json();
+                return data
+              
+            } catch (error) {
+                return rejectWithValue(
+                    error instanceof Error ? error.message : "Something went wrong"
+                );
             }
         }
     );

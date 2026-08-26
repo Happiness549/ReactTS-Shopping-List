@@ -7,78 +7,119 @@
  import {useSelector} from 'react-redux'
  import type {RootState, AppDispatch} from '../../store'
 
+interface ListItemForm{
+    listId: number;
+}
 
- export const ListForm = () =>{
-       const {listId} = useParams<{listId: string}();
-       const dispatch = useDispatch<AppDispatch>()
-
-       const {items, loading} = useSelector((state: RootState) => state.items)
+    export const ListForm:React.FC<ListItemForm> = ({listId}) =>{
+        const dispatch = useDispatch<AppDispatch>()
 
 
-     const [title, setTitle] = useState('');
-     const [category, setCategory] = useState('');
-     const [Quantity, setQuantity] = useState(1);
-     const [notes, setNotes] = useState('');
-     const [image, setImage] = useState<File | null>(null);
+        const [form, setForm] = useState({
+            title: '',
+            category: '',
+            notes: '',
+            Quantity: 1,
+            image: ''
+        })
 
-     useEffect(() => {
-        if(listId) dispatch(fetchListItems(listId));
-     }, [dispatch, listId])
+        const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            const {name, value} = e.target;
+            setForm((prev) => ({
+                ...prev, 
+                [name]: value,
+            }));
 
-     const handleSubmit =(e: React.FormEvent) => {
-         e.preventDefault()
-         
+        };
 
-         dispatch(addListItem ({
-            listId,
-            title,
-            category,
-            Quantity,
-            notes: notes || undefined,
-         })
-         );
+        const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+            const file = e.target.files?.[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setForm((prev) => ({
+                    ...prev,
+                    image: reader.result as string,
+                }));
+                reader.readAsDataURL(file);
+            }
+        }
 
-         setTitle('');
-         setCategory('');
-         setQuantity(1);
-         setNotes('');
-     }
+
+
+        const handleSubmit = (e: React.FormEvent) =>{
+            e.preventDefault();
+
+            dispatch(addListItem({
+                listId: listId,
+                title: form.title,
+                category: form.category,
+                notes: form.notes,
+                Quantity: Number(form.Quantity),
+                image: form.image   
+            })
+            ); 
+
+        setForm({
+            title: '',
+            category: '',
+            notes: '',
+            Quantity: 1,
+            image: '',
+        });
+        
+    }
+
+
 
      return(
          <>
          <form onSubmit={handleSubmit}>
+
             <Input
              label='Title'
              placeholder='Enter your list title'
              type='text'
-             value={title}
-             onChange={(e) => setTitle(e.target.value)}
+             value={form.title}
+             onChange={handleChange}
          />
 
              <Input
              label='Category'
              placeholder='Enter your list title'
              type='text'
-             value={category}
-             onChange={(e) => setCategory(e.target.value)}
+             value={form.category}
+             onChange={handleChange}
+         />
+
+           <label>Notes</label>
+             <textarea
+             name='notes'
+             value={form.Quantity}
+             placeholder='Add notes'
+             onChange={handleChange}
          />
         
              <Input
-             label='Title'
-             placeholder='Enter your list title'
-             type='text'
-             value={Quantity}
-             onChange={(e) => setQuantity(e.target.value)}
+             label='Category'
+             type="number"
+             name="quantity"
+             min={1}
+             value={form.Quantity}
+             onChange={handleChange}
          />
-        
-             <Input
-             label='Title'
-             placeholder='Enter your list title'
-             type='text'
-             value={notes}
-             onChange={(e) => setNotes(e.target.value)}
-         />
-        
+
+       
+
+         <label>Image</label>
+         <input  type='file' accept="image/*" onChange={handleImageChange}/>
+         {form.image && (
+           <img
+           src= {form.image}
+           alt="Selected item"
+           />
+         )}
+       
          <Button text={'Submit'}/>
          </form>
          </>

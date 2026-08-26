@@ -100,7 +100,6 @@ export const deleteList = createAsyncThunk('lists/deleteLists',
         method: "DELETE",
       }
     );
-
     if(!response.ok){
       throw new Error("Failed to delete list");
     }
