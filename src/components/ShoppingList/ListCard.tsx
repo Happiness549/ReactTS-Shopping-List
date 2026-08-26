@@ -20,6 +20,10 @@ export const ListCard:React.FC<ListCardProps> = ({shoppingList}) => {
   
   const dispatch = useDispatch<AppDispatch>();
   const navigate= useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/list/${shoppingList.id}`, {state: shoppingList});
+  };
   
   const handleDelete =() =>{
     if (shoppingList.id === undefined) return;
@@ -31,8 +35,8 @@ export const ListCard:React.FC<ListCardProps> = ({shoppingList}) => {
   //  }
 
   return (
-    <div className=''>
-      <div className='rounded-4xl p-8 mt-5  w-70 h-70 border border-gray-300 xl'>
+    
+      <div className='rounded-4xl p-8 mt-5  w-70 h-70 border border-gray-300 xl' onClick={handleCardClick}>
         <div className='p-2'>
              <Text variant={'h2'} className='font-bold text-2xl text-[#001C44]'>{shoppingList.category}</Text>
              <Text variant={'p'} className='p-2 text-[#001C44]'>{shoppingList.numberOfItem}items</Text>
@@ -47,7 +51,7 @@ export const ListCard:React.FC<ListCardProps> = ({shoppingList}) => {
         </div>
         
     </div>
-    </div>
+    
     
   )
 }

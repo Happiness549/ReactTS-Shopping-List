@@ -1,28 +1,37 @@
 import React from 'react'
-import {useParams, useNavigate} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import type  {RootState} from '../../store'
 import {Text} from '../ui/Text'
 import {ListItemCard} from './ListItemCard'
+import {ListForm} from './ListForm'
+
 
 
 
 export const ListItems = () => {
-  const {id} = useParams();
-  const navigate = useNavigate();
+  const {listId} = useParams<{listId:string}>();
+  
+ const selectedList = useSelector((state: RootState) =>
+  state.items.items.find((item) => item.id === listId)
+);
 
-  const selectedList = useSelector((state:RootState) => state.items.items)
+
+
   if(!selectedList) return <Text variant={'p'}>List not found</Text>
+  
     
   return (
+    <>
+ <ListForm/>
     <div>
-      {selectedList.map((list) => (
-        <ListItemCard 
-         key={list.id}
-         ListItem={list}
-        />
-      ))}
+      <ListItemCard
+        key={selectedList.id}
+        ListItem={selectedList}
+      />
 
     </div>
+      
+    </>
   )
 }

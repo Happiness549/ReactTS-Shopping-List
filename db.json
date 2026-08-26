@@ -42,13 +42,29 @@
       "id": "hqb3uuCJFeE"
     },
     {
-      "category": "Birthday",
+      "category": "Party",
       "numberOfItem": 0,
       "completed": 0,
       "userId": "bmtPX-0myLE",
-      "id": "6Xtt6JTT57Y"
+      "id": "hrA80tINHqM"
+    },
+    {
+      "category": "",
+      "numberOfItem": 0,
+      "completed": 0,
+      "userId": "bmtPX-0myLE",
+      "id": "Hwvx1ONSTto"
+    },
+    {
+      "category": "Party",
+      "numberOfItem": 0,
+      "completed": 0,
+      "userId": "DnMjzhu2eNM",
+      "id": "hzEqGULiCc0"
     }
   ],
-  "ItemList": [],
+  "itemList": [
+
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

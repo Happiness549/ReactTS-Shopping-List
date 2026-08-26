@@ -5,10 +5,10 @@ export interface ListItem{
     title: string;
     category: string;
     notes?: string;
-    Quantity: number;
+    Quantity: string;
     image?: string;
     id?: number;
-    listId?: number;
+    listId: string;
 }
 
 export interface ListState{
@@ -46,7 +46,7 @@ export const fetchListItems = createAsyncThunk("items/fetchListItems",
     export const addListItem = createAsyncThunk<ListItem, Omit<ListItem, "id">>('items/addListItem',
         async(newItemData, {rejectWithValue}) =>{
             try{
-                const response = await fetch(`http:localhost/3000/itemList`, {
+                const response = await fetch(`http://localhost:3000/itemList`, {
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(newItemData),

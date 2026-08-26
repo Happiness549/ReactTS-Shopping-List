@@ -8,13 +8,20 @@
  import { Button } from '../ui/Button'
  import { Text } from '../ui/Text'
  import { Card } from '../ui/Card'
+ import {useNavigate} from 'react-router-dom'
 
 
  
 
  export const ShoppingList=() => {
     const lists = useSelector((state: RootState) => state.list.shoppingList);
-    const userData = useSelector((state: RootState) => state.login.userData)
+    const userData = useSelector((state: RootState) => state.login.userData);
+    const navigate = useNavigate(); // ✅ Handle routing here
+
+      const handleCardClick = (id: string) => {
+        navigate(`/lists/${id}`); 
+      };
+
     
 
     return(
@@ -42,8 +49,11 @@
       <ListCard
         key={listItem.id}
         shoppingList={listItem} 
+       
       /> 
     ))}
+
+     
 
     <Card className='flex  bg-[#BCFEFE] w-300 mt-10 justify-cente text-center h-30'>
       <div className='text-center'>

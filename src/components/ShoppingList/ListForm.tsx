@@ -2,16 +2,13 @@
  import {Input} from '../ui/Input'
  import {useDispatch} from 'react-redux'
  import {Button} from '../ui/Button'
- import {addListItem, fetchListItems} from '../../redux/Features/ListItemSlice'
+ import {addListItem} from '../../redux/Features/ListItemSlice'
+ import type { AppDispatch} from '../../store'
  import {useParams} from 'react-router-dom'
- import {useSelector} from 'react-redux'
- import type {RootState, AppDispatch} from '../../store'
 
-interface ListItemForm{
-    listId: number;
-}
 
-    export const ListForm:React.FC<ListItemForm> = ({listId}) =>{
+    export const ListForm = () =>{
+        const { listId } = useParams<{ listId: string }>(); 
         const dispatch = useDispatch<AppDispatch>()
 
 
@@ -19,7 +16,7 @@ interface ListItemForm{
             title: '',
             category: '',
             notes: '',
-            Quantity: 1,
+            Quantity: '',
             image: ''
         })
 
@@ -29,7 +26,6 @@ interface ListItemForm{
                 ...prev, 
                 [name]: value,
             }));
-
         };
 
         const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,12 +46,17 @@ interface ListItemForm{
         const handleSubmit = (e: React.FormEvent) =>{
             e.preventDefault();
 
+            if (!listId) {
+    console.error("Dispatch blocked: listId is undefined or empty!");
+    return; 
+}
+
             dispatch(addListItem({
-                listId: listId,
+               listId: listId,
                 title: form.title,
                 category: form.category,
                 notes: form.notes,
-                Quantity: Number(form.Quantity),
+                Quantity: form.Quantity,
                 image: form.image   
             })
             ); 
@@ -64,7 +65,7 @@ interface ListItemForm{
             title: '',
             category: '',
             notes: '',
-            Quantity: 1,
+            Quantity: '',
             image: '',
         });
         
@@ -101,10 +102,10 @@ interface ListItemForm{
          />
         
              <Input
-             label='Category'
+             label='Quantity'
              type="number"
              name="quantity"
-             min={1}
+             placeholder = 'Add quantity'
              value={form.Quantity}
              onChange={handleChange}
          />

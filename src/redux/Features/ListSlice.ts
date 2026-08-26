@@ -113,7 +113,9 @@ export const deleteList = createAsyncThunk('lists/deleteLists',
 const listSlice = createSlice({
   name: "lists",
   initialState,
-  reducers: {},
+  reducers: {
+       
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addList.pending, (state) => {
