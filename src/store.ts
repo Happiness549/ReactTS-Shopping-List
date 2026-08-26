@@ -3,15 +3,17 @@ import ListItemReducer from './redux/Features/ListItemSlice'
 import listReducer from './redux/Features/ListSlice'
 import SignupReducer from './redux/Features/SignupSlice'
 import LoginReducer from './redux/Features/LoginSlice'
+import itemReducer from './redux/Features/ListItemSlice'
 
 
 
 const store = configureStore({
     reducer: {
-        listItemLists: ListItemReducer,
+        items: itemReducer,
         list: listReducer,
         user: SignupReducer,
         login: LoginReducer,
+
 
     },
      

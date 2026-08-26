@@ -12,6 +12,7 @@ import { ProtectedRoute } from './components/ShoppingList/ProtectedRoute'
 import {ListItems} from './components/ShoppingList/ListItems'
 import {Profile} from './pages/Profile'
 
+ 
 
 function App() {
   const dispatch = useDispatch()
@@ -25,7 +26,8 @@ function App() {
       <Route path='/' element={<Landing />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />}/>
-      <Route path='/list/:id' element={<ListItems/>}/>
+      <Route path='/list/:listId' element={<ListItems/>}/>
+      
      
       
 

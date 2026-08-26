@@ -5,10 +5,10 @@ export interface ListItem{
     title: string;
     category: string;
     notes?: string;
-    Quantity: string;
+    Quantity: number;
     image?: string;
-     id?: number;
-     listId?: string;
+    id?: number;
+    listId?: string;
 }
 
 export interface ListState{
@@ -27,7 +27,7 @@ export const fetchListItems = createAsyncThunk("items/fetchListItems",
     async(listId:string,{rejectWithValue}) => {
         
         try{
-            const response = await fetch("http://localhost/3000/lists/${listId}/listItem");
+            const response = await fetch("http://localhost/3000/itemList?listId=${listId}");
             if(!response.ok) throw new Error("Failed to fetch list items");
                 return(await response.json() as ListItem[]);
                 
@@ -41,8 +41,7 @@ export const fetchListItems = createAsyncThunk("items/fetchListItems",
     export const addListItem = createAsyncThunk<ListItem, Omit<ListItem, "id">>('items/addListItem',
         async(newItemData, {rejectWithValue}) =>{
             try{
-                const {listId} = newItemData;
-                const response = await fetch(`http:localhost/3000/lists/${listId}/listItem`, {
+                const response = await fetch(`http:localhost/3000/itemList`, {
                     method: 'Post', 
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(newItemData),
@@ -56,12 +55,38 @@ export const fetchListItems = createAsyncThunk("items/fetchListItems",
     );
     
 
-const ListSlice = createSlice({
-    name: "lists",
+const itemSlice = createSlice({
+    name: "items",
     initialState,
-    reducers: {}
+    reducers: {},
+    extraReducers: (builder) => {
+        builder 
+
+        .addCase(addListItem.pending, (state) => {
+           state.loading = true;
+           state.error = null;
+        })
+        .addCase(addListItem.fulfilled, (state, action:PayloadAction<ListItem>) => {
+            state.items.push(action.payload);
+        })
+        .addCase(addListItem.rejected, (state, action) => {
+            state.error = action.payload as string;
+        })
+
+           .addCase(fetchListItems.pending, (state) => {
+           state.loading = true;
+           state.error = null;
+        })
+        // .addCase(fetchListItems.fulfilled, (state, action:PayloadAction<ListItem>) => {
+        //     state.loading = false;
+        //     state.ListItem = action.payload;
+        // })
+        .addCase(fetchListItems.rejected, (state, action) => {
+            state.error = action.payload as string;
+        })
+    }
 });
 
 
 
-export default ListSlice.reducer
+export default itemSlice.reducer
