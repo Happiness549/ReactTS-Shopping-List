@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { ShoppingList } from '../components/ShoppingList/ShoppingList'
 import {Navbar} from '../components/ShoppingList/Navbar'
 import { ListItemForm } from '../components/ShoppingList/ListItemForm'

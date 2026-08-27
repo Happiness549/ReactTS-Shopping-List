@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
+import type{ PayloadAction } from "@reduxjs/toolkit";
 
 export interface ShoppingList {
   id?: number;
@@ -13,20 +14,19 @@ interface ListState {
   shoppingList: ShoppingList[];
   loading: boolean;
   error: string | null;
+  isListModalOpen: boolean;
 }
 
 const initialState: ListState = {
   shoppingList: [],
   loading: false,
   error: null,
+  isListModalOpen: false,
 };
 
 // ADD LIST
-export const addList = createAsyncThunk(
-  "lists/addList",
-  async (
-    newList: Omit<ShoppingList, "id">,
-    { getState, rejectWithValue }
+export const addList = createAsyncThunk("lists/addList",
+  async (newList: Omit<ShoppingList, "id">,{ getState, rejectWithValue }
   ) => {
     try {
       const state = getState() as RootState;
@@ -208,7 +208,17 @@ const listSlice = createSlice({
   name: "lists",
   initialState,
 
-  reducers: {},
+  reducers: {
+     openListModal: (state) => {
+      state.isListModalOpen = true;
+    },
+    closeListModal: (state) => {
+      state.isListModalOpen = false;
+    },
+    setListModal: (state, action: PayloadAction<boolean>) => {
+      state.isListModalOpen = action.payload;
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -297,4 +307,5 @@ const listSlice = createSlice({
   },
 });
 
+export const { openListModal, closeListModal, setListModal } = listSlice.actions;
 export default listSlice.reducer;

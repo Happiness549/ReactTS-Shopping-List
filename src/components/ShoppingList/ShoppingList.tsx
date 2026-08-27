@@ -1,4 +1,4 @@
- import react from 'react'
+ 
  import {useSelector} from 'react-redux'
  import type  {RootState} from '../../store'
  import { ListCard } from './ListCard'
@@ -60,7 +60,7 @@
          <Text variant={'p'}>Add a new shopping list in seconds</Text>
       </div>
       <div>
-         <Button text={"Add List"} className="w-50 ml-160"/>
+         <Button text={"Add List"} className="w-50 ml-160" id="openModalBtn"/>
          <PlusIcon className="ml-168 text-white absolute -mt-9" />
       </div> 
     </Card>

@@ -3,18 +3,19 @@ import { Input } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { useDispatch } from 'react-redux'
 import { addList } from '../../redux/Features/ListSlice'
+// import type{ RootState } from '../../store'
+// import { useSelector } from 'react-redux'
+
 
 
 
 export const ListItemForm = () => {
     const dispatch = useDispatch<any>();
-
+    // const isOpen = useSelector((state: RootState) => state.list.isListModalOpen);
     const [category, setCategory] = useState('');
-
+    
     const handleSubmit =(e: React.FormEvent) => {
-        
         e.preventDefault();
-
         dispatch(
             addList({
                 category,
@@ -23,8 +24,10 @@ export const ListItemForm = () => {
             })
         );
         setCategory('');
+        // dispatch(());
     
     }
+    // if (!isOpen) return null;
   return (
 
      <form onSubmit={handleSubmit}>

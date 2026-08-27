@@ -6,14 +6,14 @@ import { TrashIcon, EditIcon } from "lucide-react";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../store";
 import { useNavigate } from "react-router-dom";
-import updateList from '../../redux/Features/ListSlice'
+
 
 interface ListCardProps {
   shoppingList: ShoppingList;
 }
 
 export const ListCard: React.FC<ListCardProps> = ({
-  shoppingList,
+shoppingList,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();

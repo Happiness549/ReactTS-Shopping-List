@@ -69,6 +69,13 @@
       "completed": 0,
       "userId": "CeCvEYodz30",
       "id": "m5AVk3R_2nA"
+    },
+    {
+      "category": "Mango",
+      "numberOfItem": 0,
+      "completed": 0,
+      "userId": "DnMjzhu2eNM",
+      "id": "q1XBR16pqh8"
     }
   ],
   "itemList": [
@@ -98,6 +105,15 @@
       "Quantity": "2",
       "image": "",
       "id": "GFSxIDhJVJI"
+    },
+    {
+      "listId": "hzEqGULiCc0",
+      "title": "Cabbage",
+      "category": "Veg",
+      "notes": "",
+      "Quantity": "3",
+      "image": "",
+      "id": "hkrslyd6TfQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
