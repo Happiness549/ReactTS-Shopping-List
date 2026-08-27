@@ -103,10 +103,9 @@ export const fetchLists = createAsyncThunk(
 export const updateList = createAsyncThunk(
   "lists/updateList",
   async (
-    updatedList: ShoppingList,
-    { getState, rejectWithValue }
-  ) => {
-    try {
+    updatedList: ShoppingList,{ getState, rejectWithValue }) => {
+   
+      try {
       const state = getState() as RootState;
       const userId = state.login.userData?.id;
 
@@ -118,9 +117,7 @@ export const updateList = createAsyncThunk(
         return rejectWithValue("List ID is missing");
       }
 
-      const existingList = state.list.shoppingList.find(
-        (list) => list.id === updatedList.id
-      );
+      const existingList = state.list.shoppingList.find((list) => list.id === updatedList.id);
 
       if (
         !existingList ||
@@ -263,21 +260,17 @@ const listSlice = createSlice({
       .addCase(updateList.fulfilled, (state, action) => {
         state.loading = false;
 
-        const index = state.shoppingList.findIndex(
-          (list) => list.id === action.payload.id
-        );
-
+        const index = state.shoppingList.findIndex((list) => list.id === action.payload.id);
         if (index !== -1) {
           state.shoppingList[index] = action.payload;
         }
       })
 
+      // Replacing the whole object of lists returned from the thunk with updated list
       .addCase(updateList.rejected, (state, action) => {
         state.loading = false;
-        state.error =
-          typeof action.payload === "string"
-            ? action.payload
-            : "Failed to update list";
+        state.error = typeof action.payload === "string"
+            ? action.payload : "Failed to update list";
       })
 
       // DELETE

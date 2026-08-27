@@ -124,6 +124,7 @@ export const ListForm = ({ listId }: ListFormProps) => {
           <img
             src={form.image}
             alt="Selected item"
+            className='w-15 h-15'
           />
         )}
 

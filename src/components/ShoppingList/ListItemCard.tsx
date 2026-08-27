@@ -4,44 +4,39 @@ import { Button } from "../ui/Button";
 import { TrashIcon } from "lucide-react";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../store";
-import {
-  deleteListItem,
-  type ListItem,
-} from "../../redux/Features/ListItemSlice";
+import {deleteListItem,type ListItem,} from "../../redux/Features/ListItemSlice";
 
 interface ListCardProps {
   ListItem: ListItem;
 }
 
-export const ListItemCard: React.FC<ListCardProps> = ({
-  ListItem,
-}) => {
+export const ListItemCard: React.FC<ListCardProps> = ({ ListItem,}) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleDelete = () => {
     if (ListItem.id === undefined) return;
-
-    dispatch(deleteListItem(ListItem.id));
+         dispatch(deleteListItem(ListItem.id));
   };
 
   return (
-    <div className="rounded-4xl p-8 mt-5 w-70 h-70 border border-gray-300 xl">
-      <div>
+    <div className="rounded-4xl flex p-8 mt-5 w-300 h-25 border border-gray-300 xl ml-10">
+      <div className='flex gap-25'>
         <Text variant={"p"}>{ListItem.image}</Text>
 
         <Text variant={"p"}>{ListItem.title}</Text>
+        <div className='bg-[#BCFEFE] w-25 h-15'><Text variant={"p"}>{ListItem.category}</Text></div>
 
-        <Text variant={"p"}>{ListItem.category}</Text>
+        
 
-        <Text variant={"p"}>{ListItem.Quantity}</Text>
+        <Text variant={"p"}>Qty:  {ListItem.Quantity}</Text>
 
-        <Text variant={"p"}>{ListItem.notes}</Text>
+        <Text variant={"p"}>Notes:  {ListItem.notes}</Text>
       </div>
 
-      <div className="flex gap-4 mt-4">
+      <div className="flex gap-4 mt-4 ml-25 -mt-10">
         <Button
           text=""
-          className="w-12 h-12 mt-3 bg-red-300 rounded-full"
+          className="w-12 h-12 mt-3 bg-red-300 rounded-full "
           onClick={handleDelete}
         />
 

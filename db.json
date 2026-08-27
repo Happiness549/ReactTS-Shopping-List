@@ -31,6 +31,14 @@
       "cellNumber": "0845884210",
       "password": "Neliswa",
       "id": "fDMXkkX1oI0"
+    },
+    {
+      "name": "Gumede",
+      "surname": "Sabelo",
+      "email": "Gumede@gmail.com",
+      "cellNumber": "0715373456467",
+      "password": "1234",
+      "id": "CeCvEYodz30"
     }
   ],
   "lists": [
@@ -49,53 +57,21 @@
       "id": "hzEqGULiCc0"
     },
     {
-      "category": "Brthday",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "SilkXUyHDcY"
-    },
-    {
       "category": "Party",
       "numberOfItem": 0,
       "completed": 0,
       "userId": "bmtPX-0myLE",
       "id": "pKNqni_Bopw"
+    },
+    {
+      "category": "Party",
+      "numberOfItem": 0,
+      "completed": 0,
+      "userId": "CeCvEYodz30",
+      "id": "m5AVk3R_2nA"
     }
   ],
   "itemList": [
-    {
-      "title": "Banana",
-      "category": "fruit",
-      "notes": "Spar",
-      "Quantity": "4",
-      "image": "",
-      "id": "k1YWCqMr6MI"
-    },
-    {
-      "title": "cvbdf",
-      "category": "dvdfbv",
-      "notes": "dvdf5",
-      "Quantity": "6",
-      "image": "",
-      "id": "Ol9RJx1A7Hg"
-    },
-    {
-      "title": "cvxxv",
-      "category": "xv xc v",
-      "notes": "2",
-      "Quantity": "5",
-      "image": "",
-      "id": "YTovsVoMtis"
-    },
-    {
-      "title": "Bread",
-      "category": "Fruit",
-      "notes": "",
-      "Quantity": "3",
-      "image": "",
-      "id": "30ABC3IQ-GI"
-    },
     {
       "listId": "pKNqni_Bopw",
       "title": "Bones",
@@ -106,21 +82,22 @@
       "id": "vXvTbPaWdN4"
     },
     {
-      "listId": "SilkXUyHDcY",
-      "title": "Eggs",
-      "category": "Meat",
-      "notes": "",
-      "Quantity": "5",
+      "listId": null,
+      "title": "Cabbage",
+      "category": "Veg",
+      "notes": "Buy at Checkkers",
+      "Quantity": "3",
       "image": "",
-      "id": "Wn7y9m8wtPQ"
+      "id": "50UqnomuNzg"
     },
     {
-      "title": "",
-      "category": "",
-      "notes": "",
-      "Quantity": "",
+      "listId": null,
+      "title": "Deodorant",
+      "category": "Cosmetics",
+      "notes": "Sanex",
+      "Quantity": "2",
       "image": "",
-      "id": "XU2umGQdJWY"
+      "id": "GFSxIDhJVJI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

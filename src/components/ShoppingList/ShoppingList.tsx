@@ -49,13 +49,12 @@
       <ListCard
         key={listItem.id}
         shoppingList={listItem} 
-       
       /> 
     ))}
 
      
 
-    <Card className='flex  bg-[#BCFEFE] w-300 mt-10 justify-cente text-center h-30'>
+    <Card className='flex  bg-[#BCFEFE] w-300 mt-10 justify-cente text-center h-30 mt-40'>
       <div className='text-center'>
          <Text variant={'h1'} className='font-bold text-2xl text-[#001C44]'>Need something quickly?</Text>
          <Text variant={'p'}>Add a new shopping list in seconds</Text>
