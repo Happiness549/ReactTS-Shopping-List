@@ -45,26 +45,83 @@
       "category": "Party",
       "numberOfItem": 0,
       "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "hrA80tINHqM"
+      "userId": "DnMjzhu2eNM",
+      "id": "hzEqGULiCc0"
     },
     {
-      "category": "",
+      "category": "Brthday",
       "numberOfItem": 0,
       "completed": 0,
       "userId": "bmtPX-0myLE",
-      "id": "Hwvx1ONSTto"
+      "id": "SilkXUyHDcY"
     },
     {
       "category": "Party",
       "numberOfItem": 0,
       "completed": 0,
-      "userId": "DnMjzhu2eNM",
-      "id": "hzEqGULiCc0"
+      "userId": "bmtPX-0myLE",
+      "id": "pKNqni_Bopw"
     }
   ],
   "itemList": [
-
+    {
+      "title": "Banana",
+      "category": "fruit",
+      "notes": "Spar",
+      "Quantity": "4",
+      "image": "",
+      "id": "k1YWCqMr6MI"
+    },
+    {
+      "title": "cvbdf",
+      "category": "dvdfbv",
+      "notes": "dvdf5",
+      "Quantity": "6",
+      "image": "",
+      "id": "Ol9RJx1A7Hg"
+    },
+    {
+      "title": "cvxxv",
+      "category": "xv xc v",
+      "notes": "2",
+      "Quantity": "5",
+      "image": "",
+      "id": "YTovsVoMtis"
+    },
+    {
+      "title": "Bread",
+      "category": "Fruit",
+      "notes": "",
+      "Quantity": "3",
+      "image": "",
+      "id": "30ABC3IQ-GI"
+    },
+    {
+      "listId": "pKNqni_Bopw",
+      "title": "Bones",
+      "category": "Meat",
+      "notes": "",
+      "Quantity": "3",
+      "image": "",
+      "id": "vXvTbPaWdN4"
+    },
+    {
+      "listId": "SilkXUyHDcY",
+      "title": "Eggs",
+      "category": "Meat",
+      "notes": "",
+      "Quantity": "5",
+      "image": "",
+      "id": "Wn7y9m8wtPQ"
+    },
+    {
+      "title": "",
+      "category": "",
+      "notes": "",
+      "Quantity": "",
+      "image": "",
+      "id": "XU2umGQdJWY"
+    }
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }
