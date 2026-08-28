@@ -1,6 +1,6 @@
 import React from "react";
 import { Text } from "../ui/Text";
-import { deleteList, type ShoppingList } from "../../redux/Features/ListSlice";
+import { deleteList, startEditList, type ShoppingList } from "../../redux/Features/ListSlice";
 import { Button } from "../ui/Button";
 import { TrashIcon, EditIcon } from "lucide-react";
 import { useDispatch } from "react-redux";
@@ -13,8 +13,7 @@ interface ListCardProps {
 }
 
 export const ListCard: React.FC<ListCardProps> = ({
-shoppingList,
-}) => {
+shoppingList,}) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -30,6 +29,10 @@ shoppingList,
      dispatch(deleteList(shoppingList.id));
   };
 
+  const handleEdit = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    dispatch(startEditList(shoppingList));
+  }
 
 
   return (
@@ -37,14 +40,15 @@ shoppingList,
       <div className="p-2">
         
         <Text variant={"h2"} className="font-bold text-2xl text-[#001C44]">{shoppingList.category}</Text>
-         <Text variant={"p"}className="p-2 text-[#001C44]">{shoppingList.numberOfItem}items</Text>
+        <Text variant={"p"}className="p-2 text-[#001C44]">{shoppingList.numberOfItem}items</Text>
         <Text variant={"p"}className="text-[#001C44]">{shoppingList.completed}completed</Text>
+        <Text>Created: {new Date(shoppingList.dateCreated).toLocaleDateString()}</Text>
       </div>
 
       <div className="flex gap-4 mt-4">
         <Button text="" className="w-12 h-12 mt-3 bg-red-300 rounded-full"onClick={handleDelete}/>
         <TrashIcon className="absolute mt-5 ml-3 text-red-700" />
-        <Button text="" className="w-11 h-11 mt-4" />
+        <Button text="" className="w-11 h-11 mt-4" onClick={handleEdit} />
         <EditIcon className="absolute ml-19 mt-6" />
       </div>
     </div>

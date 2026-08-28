@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
 import type { UserData } from './SignupSlice';
-import { saveUser, getUser,removeUser } from '../../utils/localStorage'; 
+import { saveUser, getUser } from '../../utils/localStorage'; 
 
 interface LoginState {
   userData: UserData | null;

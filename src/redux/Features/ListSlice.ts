@@ -8,6 +8,7 @@ export interface ShoppingList {
   category: string;
   numberOfItem: number;
   completed: number;
+  dateCreated: string;
 }
 
 interface ListState {
@@ -15,6 +16,7 @@ interface ListState {
   loading: boolean;
   error: string | null;
   isListModalOpen: boolean;
+  editingList: ShoppingList | null;
 }
 
 const initialState: ListState = {
@@ -22,6 +24,7 @@ const initialState: ListState = {
   loading: false,
   error: null,
   isListModalOpen: false,
+  editingList: null,
 };
 
 // ADD LIST
@@ -218,6 +221,15 @@ const listSlice = createSlice({
     setListModal: (state, action: PayloadAction<boolean>) => {
       state.isListModalOpen = action.payload;
     },
+    startEditList: (state, action: PayloadAction<ShoppingList>) => {
+      state.editingList =action.payload;
+      state.isListModalOpen = true; 
+    },
+    clearEditList: (state) => {
+      state.editingList = null;
+      state.isListModalOpen =false;
+    }
+
   },
 
   extraReducers: (builder) => {
@@ -307,5 +319,5 @@ const listSlice = createSlice({
   },
 });
 
-export const { openListModal, closeListModal, setListModal } = listSlice.actions;
+export const { openListModal, closeListModal, setListModal,  clearEditList, startEditList } = listSlice.actions;
 export default listSlice.reducer;

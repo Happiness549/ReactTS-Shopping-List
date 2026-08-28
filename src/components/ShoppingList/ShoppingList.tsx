@@ -8,19 +8,20 @@
  import { Button } from '../ui/Button'
  import { Text } from '../ui/Text'
  import { Card } from '../ui/Card'
- import {useNavigate} from 'react-router-dom'
+ import { useDispatch } from 'react-redux'
+ import type{ AppDispatch } from '../../store'
+ import { openListModal } from '../../redux/Features/ListSlice'
+ import { ListItemForm } from './ListItemForm'
+ 
 
 
  
 
  export const ShoppingList=() => {
+  const dispatch = useDispatch<AppDispatch>();
     const lists = useSelector((state: RootState) => state.list.shoppingList);
     const userData = useSelector((state: RootState) => state.login.userData);
-    const navigate = useNavigate(); // ✅ Handle routing here
-
-      const handleCardClick = (id: string) => {
-        navigate(`/lists/${id}`); 
-      };
+ 
 
     
 
@@ -28,7 +29,7 @@
        <>
        {lists.length === 0 ? (
   <>
-    <div className="flex" >
+    <div className="flex">
       <Text variant={'h1'} className='font-bold text-3xl'>Welcome: {userData?.name}</Text>
       <div className="rounded-full h-40 w-40 ml-130 mt-30 bg-[#BCFEFE]">
       <Clipboard size={120} className="mt-5 ml-5 text-[#2D99AE]"/>
@@ -60,8 +61,9 @@
          <Text variant={'p'}>Add a new shopping list in seconds</Text>
       </div>
       <div>
-         <Button text={"Add List"} className="w-50 ml-160" id="openModalBtn"/>
+         <Button text={"Add List"} className="w-50 ml-160" id="openModalBtn" onClick={() => dispatch(openListModal())}/>
          <PlusIcon className="ml-168 text-white absolute -mt-9" />
+         <ListItemForm/>
       </div> 
     </Card>
   </>
