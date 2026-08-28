@@ -25,10 +25,6 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />}/>
     
-      
-     
-      
-
       <Route element={<MainLayout/>}>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/lists/:listId' element={<ListItems/>}/>

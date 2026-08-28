@@ -12,8 +12,7 @@
  import type{ AppDispatch } from '../../store'
  import { openListModal } from '../../redux/Features/ListSlice'
  import { ListItemForm } from './ListItemForm'
- 
-
+ import { useMemo } from 'react';
 
  
 
@@ -21,13 +20,19 @@
   const dispatch = useDispatch<AppDispatch>();
     const lists = useSelector((state: RootState) => state.list.shoppingList);
     const userData = useSelector((state: RootState) => state.login.userData);
- 
-
+    const query = useSelector((state: RootState) => state.search.searchTerm);
     
+    const filteredLists = useMemo(() => {
+      if (!query.trim()) return lists;
+      const lowerQuery = query.trim().toLowerCase();
+      return lists.filter((item) =>
+        item.category.toLowerCase().includes(lowerQuery)
+      );
+    }, [lists, query]);
 
     return(
        <>
-       {lists.length === 0 ? (
+       {filteredLists.length === 0 ? (
   <>
     <div className="flex">
       <Text variant={'h1'} className='font-bold text-3xl'>Welcome: {userData?.name}</Text>
@@ -46,7 +51,7 @@
   </>
 ) : (
   <>
-    {lists.map((listItem) => (
+    {filteredLists.map((listItem) => (
       <ListCard
         key={listItem.id}
         shoppingList={listItem} 
@@ -55,7 +60,7 @@
 
      
 
-    <Card className='flex  bg-[#BCFEFE] w-300 mt-10 justify-cente text-center h-30 mt-40'>
+    <Card className='flex  bg-[#BCFEFE] w-300 mt-10 justify-cente text-center h-30 mt-10'>
       <div className='text-center'>
          <Text variant={'h1'} className='font-bold text-2xl text-[#001C44]'>Need something quickly?</Text>
          <Text variant={'p'}>Add a new shopping list in seconds</Text>

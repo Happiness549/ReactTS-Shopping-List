@@ -57,13 +57,6 @@
       "id": "hzEqGULiCc0"
     },
     {
-      "category": "Umemulo",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "pKNqni_Bopw"
-    },
-    {
       "category": "Party",
       "numberOfItem": 0,
       "completed": 0,
@@ -76,18 +69,11 @@
       "completed": 0,
       "userId": "DnMjzhu2eNM",
       "id": "q1XBR16pqh8"
-    },
-    {
-      "category": "P",
-      "numberOfItem": 0,
-      "completed": 0,
-      "userId": "bmtPX-0myLE",
-      "id": "wKx9Mmw0gwM"
     }
   ],
   "itemList": [
     {
-      "listId": "pKNqni_Bopw",
+      "listId": null,
       "title": "Bones",
       "category": "Meat",
       "notes": "",
@@ -121,6 +107,15 @@
       "Quantity": "3",
       "image": "",
       "id": "hkrslyd6TfQ"
+    },
+    {
+      "listId": null,
+      "title": "Cabbage",
+      "category": "Veg",
+      "notes": "Shoprite",
+      "Quantity": "1",
+      "image": "",
+      "id": "vbXzDbkYabI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

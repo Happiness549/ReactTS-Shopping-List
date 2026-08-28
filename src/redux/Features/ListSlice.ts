@@ -17,6 +17,7 @@ interface ListState {
   error: string | null;
   isListModalOpen: boolean;
   editingList: ShoppingList | null;
+  
 }
 
 const initialState: ListState = {
@@ -85,12 +86,14 @@ export const fetchLists = createAsyncThunk(
         `http://localhost:3000/lists?userId=${userId}`
       );
 
+      
       if (!response.ok) {
         throw new Error("Failed to fetch shopping lists");
       }
 
       const data: ShoppingList[] = await response.json();
 
+      console.log(`http://localhost:3000/lists?userId=${userId}`)
       return data;
     } catch (error) {
       return rejectWithValue(
@@ -228,7 +231,8 @@ const listSlice = createSlice({
     clearEditList: (state) => {
       state.editingList = null;
       state.isListModalOpen =false;
-    }
+    },
+   
 
   },
 
@@ -319,5 +323,5 @@ const listSlice = createSlice({
   },
 });
 
-export const { openListModal, closeListModal, setListModal,  clearEditList, startEditList } = listSlice.actions;
+export const { openListModal, closeListModal, setListModal,  clearEditList, startEditList,  } = listSlice.actions;
 export default listSlice.reducer;

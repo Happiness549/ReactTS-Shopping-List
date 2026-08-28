@@ -36,7 +36,8 @@ shoppingList,}) => {
 
 
   return (
-    <div className="rounded-4xl p-8 mt-5 w-70 h-70 border border-gray-300 xl" onClick={handleCardClick}>
+    <div className=" h-80 w-80 rounded-3xl  has-[:hover]:bg-gray-100 flex transition-colors duration-500">
+    <div className="rounded-4xl p-8 mt-5 w-70 h-70 border border-gray-300 xl hover:bg-gray-100 transition-colors duration-200" onClick={handleCardClick}>
       <div className="p-2">
         
         <Text variant={"h2"} className="font-bold text-2xl text-[#001C44]">{shoppingList.category}</Text>
@@ -51,6 +52,7 @@ shoppingList,}) => {
         <Button text="" className="w-11 h-11 mt-4" onClick={handleEdit} />
         <EditIcon className="absolute ml-19 mt-6" />
       </div>
+    </div>
     </div>
   );
 };
