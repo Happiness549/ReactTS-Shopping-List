@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Input } from "../ui/Input";
 import { Button } from "../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
-import {addList,updateList,closeListModal, clearEditList,
-} from "../../redux/Features/ListSlice";
+import {addList,updateList, clearEditList,} from "../../redux/Features/ListSlice";
 import type { RootState, AppDispatch } from "../../store";
 
 export const ListItemForm = () => {
