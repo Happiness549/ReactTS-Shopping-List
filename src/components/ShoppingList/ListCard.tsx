@@ -6,16 +6,21 @@ import { TrashIcon, EditIcon } from "lucide-react";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../store";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import type{ RootState } from "../../store";
 
 
 interface ListCardProps {
   shoppingList: ShoppingList;
 }
 
-export const ListCard: React.FC<ListCardProps> = ({
-shoppingList,}) => {
+export const ListCard: React.FC<ListCardProps> = ({shoppingList,}) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  const items = useSelector((state: RootState) => state.items.items);
+  const itemCount = items.filter((item) => String(item.listId) === String(shoppingList.id)
+).length;
 
   const handleCardClick = () => {
   if (shoppingList.id === undefined) return;
@@ -41,7 +46,7 @@ shoppingList,}) => {
       <div className="p-2">
         
         <Text variant={"h2"} className="font-bold text-2xl text-[#001C44]">{shoppingList.category}</Text>
-        <Text variant={"p"}className="p-2 text-[#001C44]">{shoppingList.numberOfItem}items</Text>
+        <Text variant={"p"} className="p-2 text-[#001C44]">{itemCount}: items</Text>
         <Text variant={"p"}className="text-[#001C44]">{shoppingList.completed}completed</Text>
         <Text>Created: {new Date(shoppingList.dateCreated).toLocaleDateString()}</Text>
       </div>
