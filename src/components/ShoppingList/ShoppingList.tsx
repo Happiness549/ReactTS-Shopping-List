@@ -12,23 +12,89 @@
  import type{ AppDispatch } from '../../store'
  import { openListModal } from '../../redux/Features/ListSlice'
  import { ListItemForm } from './ListItemForm'
- import { useMemo } from 'react';
+ import { useMemo, useEffect } from 'react';
+ import { setSortBy, setSortOrder, setSearchTerm } from '../../redux/Features/SearchSlice';
+ import { useSearchParams } from 'react-router-dom';
 
  
 
  export const ShoppingList=() => {
   const dispatch = useDispatch<AppDispatch>();
+  const [searchParams, setSearchParams] = useSearchParams();
+
     const lists = useSelector((state: RootState) => state.list.shoppingList);
     const userData = useSelector((state: RootState) => state.login.userData);
     const query = useSelector((state: RootState) => state.search.searchTerm);
+    const sortBy = useSelector((state: RootState) => state.search.sortBy);
+    const sortOrder = useSelector((state: RootState) =>state.search.sortOrder)
+
+    //When the user searches, update the URL.
+        useEffect(() => {
+      if (query.trim()) {
+        searchParams.set('category', query.trim());
+      } else {
+        searchParams.delete('category');
+      }
+
+      setSearchParams(searchParams);
+    }, [query]);
     
-    const filteredLists = useMemo(() => {
-      if (!query.trim()) return lists;
+    
+      // When the URL changes, update Redux and therefore update the displayed lists.
+      useEffect(() => {
+    const categoryFromUrl = searchParams.get('category') || '';
+
+    if (categoryFromUrl !== query) {
+      dispatch(setSearchTerm(categoryFromUrl));
+    }
+  }, [searchParams]);
+
+
+    // Syncs sorting options from Redux to the URL
+  useEffect(() => {
+  if (sortBy) {
+    searchParams.set('sort', sortBy);
+    searchParams.set('order', sortOrder);
+  } else {
+    searchParams.delete('sort');
+    searchParams.delete('order');
+  }
+  setSearchParams(searchParams);
+}, [sortBy, sortOrder]);
+
+
+
+  const filteredLists = useMemo(() => {
+  let result = [...lists];
+
+    if (query.trim()) {
       const lowerQuery = query.trim().toLowerCase();
-      return lists.filter((item) =>
+
+      result = result.filter((item) =>
         item.category.toLowerCase().includes(lowerQuery)
       );
-    }, [lists, query]);
+    }
+  // Sort
+  if (sortBy === 'category') {
+    result.sort((a, b) =>
+      sortOrder === 'asc'
+        ? a.category.localeCompare(b.category)
+        : b.category.localeCompare(a.category)
+    );
+  }
+
+  if (sortBy === 'dateCreated') {
+    result.sort((a, b) =>
+      sortOrder === 'asc'
+        ? new Date(a.dateCreated).getTime() -
+          new Date(b.dateCreated).getTime()
+        : new Date(b.dateCreated).getTime() -
+          new Date(a.dateCreated).getTime()
+    );
+  }
+
+  return result;
+}, [lists, query, sortBy, sortOrder]);
 
     return(
        <>
@@ -42,15 +108,44 @@
       <ShoppingCartIcon size={120} className="mt-40 text-[#2D99AE]"/>
     </div>
 
-    <div className="mt-20 text-center">
+     <div className="mt-20 text-center">
       <Text variant={"h1"} className="text-3xl font-bold text-[#001C44]"> You don't have any lists yet</Text>
       <Text variant={"p"} className="text-2xl text-[#001C44] mt-5"> Create your first shopping list and keep <br />everything organized.</Text>
-      <Button text={"Add List"} className="mt-8 w-50 relative mr-10"/>
+      <Button text={"Add List"} className="mt-8 w-50 relative mr-10" onClick={() => dispatch(openListModal())}/>
       <PlusIcon className="ml-132 text-white absolute -mt-9" />
-    </div>
+    </div> 
+
+    
   </>
 ) : (
   <>
+      <div className="flex gap-4 mb-6">
+      <select
+        value={sortBy}
+        onChange={(e) =>
+          dispatch(
+            setSortBy(e.target.value as 'category' | 'dateCreated' | '')
+          )
+        }
+        className="rounded-lg border border-gray-300 px-4 py-2"
+      >
+        <option value="">Sort by...</option>
+        <option value="category">Category</option>
+        <option value="dateCreated">Date added</option>
+      </select>
+
+      <select
+        value={sortOrder}
+        onChange={(e) =>
+          dispatch(setSortOrder(e.target.value as 'asc' | 'desc'))
+        }
+        className="rounded-lg border border-gray-300 px-4 py-2"
+      >
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+    </div>
+
     {filteredLists.map((listItem) => (
       <ListCard
         key={listItem.id}

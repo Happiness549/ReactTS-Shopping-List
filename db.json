@@ -69,18 +69,33 @@
       "completed": 0,
       "userId": "DnMjzhu2eNM",
       "id": "q1XBR16pqh8"
+    },
+    {
+      "category": "Birthday",
+      "numberOfItem": 0,
+      "completed": 0,
+      "dateCreated": "2026-08-29T12:30:21.139Z",
+      "userId": "bmtPX-0myLE",
+      "id": "D4nvRZos3TI"
+    },
+    {
+      "category": "Birthday",
+      "numberOfItem": 0,
+      "completed": 0,
+      "dateCreated": "2026-08-29T12:30:52.261Z",
+      "userId": "bmtPX-0myLE",
+      "id": "9ixF71CK65k"
+    },
+    {
+      "category": "Cape",
+      "numberOfItem": 0,
+      "completed": 0,
+      "dateCreated": "2026-08-29T12:31:57.471Z",
+      "userId": "bmtPX-0myLE",
+      "id": "7phDV0FOkss"
     }
   ],
   "itemList": [
-    {
-      "listId": null,
-      "title": "Bones",
-      "category": "Meat",
-      "notes": "",
-      "Quantity": "3",
-      "image": "",
-      "id": "vXvTbPaWdN4"
-    },
     {
       "listId": null,
       "title": "Cabbage",
@@ -107,15 +122,6 @@
       "Quantity": "3",
       "image": "",
       "id": "hkrslyd6TfQ"
-    },
-    {
-      "listId": null,
-      "title": "Cabbage",
-      "category": "Veg",
-      "notes": "Shoprite",
-      "Quantity": "1",
-      "image": "",
-      "id": "vbXzDbkYabI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
