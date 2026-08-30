@@ -8,8 +8,21 @@ import { SettingsIcon } from 'lucide-react'
 import { LogOutIcon } from 'lucide-react'
 import { ShoppingCartIcon } from 'lucide-react'
 import { CircleUser } from 'lucide-react';
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "../../store";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../redux/Features/LoginSlice";
+import { Button } from '../ui/Button'
 
 export const Sidebar = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+    dispatch(logout());
+     
+    navigate("/login");
+    };
 
     return(
         
@@ -45,10 +58,10 @@ export const Sidebar = () => {
            <Link to=''>
             <Text variant={'p'} className='text-white'>Settings</Text>
            </Link>
+           <button onClick={handleLogout}className="text-[#001C44] hover:text-[#2D99AE] transition-colors  ">
+           <Text variant={'p'} className='text-white mr-25'>Logout</Text>
+           </button>
            
-           <Link to=''>
-            <Text variant={'p'} className='text-white'>Logout</Text>
-           </Link>
             <Link to='/Profile'>
             <Text variant={'p'} className='text-white'>Profile</Text>
            </Link>

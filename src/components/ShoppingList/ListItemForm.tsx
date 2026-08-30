@@ -1,90 +1,176 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "../ui/Input";
+import { useDispatch } from "react-redux";
 import { Button } from "../ui/Button";
-import { useDispatch, useSelector } from "react-redux";
-import {addList,updateList, clearEditList,} from "../../redux/Features/ListSlice";
-import type { RootState, AppDispatch } from "../../store";
+import {addListItem,updateListItem,clearEditList,} from "../../redux/Features/ListItemSlice";
+import type { AppDispatch } from "../../store";
+import { useSelector } from "react-redux";
+import type{ RootState } from "../../store";
 
-export const ListItemForm = () => {
+
+interface ListFormProps {
+  listId: string;
+}
+
+export const ListForm = ({ listId }: ListFormProps) => { 
   const dispatch = useDispatch<AppDispatch>();
+  const isOpen = useSelector((state: RootState) => state.items.isListModalOpen);
+  const editingList = useSelector((state: RootState) => state.items.editingList);
 
-  const isOpen = useSelector((state: RootState) => state.list.isListModalOpen);
-
-  const editingList = useSelector((state: RootState) => state.list.editingList);
-
-  const [category, setCategory] = useState("");
+  const [form, setForm] = useState({
+    title: "",
+    category: "",
+    notes: "",
+    Quantity: "",
+    image: "",
+  });
 
   useEffect(() => {
-    if (editingList) {
-      setCategory(editingList.category);
-    } else {
-      setCategory("");
-    }
-  }, [editingList]);
+  if (editingList) {
+    setForm({
+      title: editingList.title,
+      category: editingList.category,
+      notes: editingList.notes || "",
+      Quantity: editingList.Quantity,
+      image: editingList.image || "",
+    });
+  }
+}, [editingList]);
+
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setForm((prev) => ({
+        ...prev,
+        image: reader.result as string,
+      }));
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (editingList) {
-      dispatch(
-        updateList({
-          ...editingList,
-          category,
-        })
-      );
-    } else {
-      dispatch(
-        addList({
-          category,
-          numberOfItem: 0,
-          completed: 0,
-          dateCreated: new Date().toISOString(),
-        })
-      );
-    }
+  if (editingList) {
+    dispatch(
+      updateListItem({
+        ...editingList,
+        title: form.title,
+        category: form.category,
+        notes: form.notes,
+        Quantity: form.Quantity,
+        image: form.image,
+        listId: listId,
+      })
+    );
+  } else {
+    dispatch(
+      addListItem({
+        listId: listId,
+        title: form.title,
+        category: form.category,
+        notes: form.notes,
+        Quantity: form.Quantity,
+        image: form.image,
+      })
+    );
+  }
 
-    setCategory("");
-    dispatch(clearEditList());
-  };
+  setForm({
+    title: "",
+    category: "",
+    notes: "",
+    Quantity: "",
+    image: "",
+  });
 
-  const handleCancel = () => {
-    setCategory("");
-    dispatch(clearEditList());
-  };
+  dispatch(clearEditList());
+};
 
-  if (!isOpen) return null;
+
+   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
-      <div className="bg-white rounded-4xl p-8 w-140">
+    <>
+     <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+     <div className="bg-white rounded-4xl p-8 w-140">
+      <form onSubmit={handleSubmit}>
+        <Input
+          label="Title"
+          placeholder="Enter your list title"
+          type="text"
+          name="title"
+          value={form.title}
+          onChange={handleChange}
+        />
 
-        <form onSubmit={handleSubmit}>
+        <Input
+          label="Category"
+          placeholder="Enter your list title"
+          type="text"
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+        />
+        <Input
+        label='Notes'
+         name="notes"
+          value={form.notes}
+          placeholder="Add notes"
+          onChange={handleChange}
+        
+        />
 
-          <Input
-            label={editingList ? "Edit List" : "Title"}
-            placeholder="Enter your list title"
-            type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+        <Input
+          label="Quantity"
+          type="number"
+          name="Quantity"
+          placeholder="Add quantity"
+          value={form.Quantity}
+          onChange={handleChange}
+        />
+
+        <label>Image</label>
+
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+
+        {form.image && (
+          <img
+            src={form.image}
+            alt="Selected item"
+            className='w-15 h-15'
           />
+        )}
 
-          <div className="flex gap-3 mt-4">
-
-            <Button
-              text={editingList ? "Update List" : "Create List"}
-            />
-
-            <Button
-              text="Cancel"
-            
-              onClick={handleCancel}
-            />
-
-          </div>
-
-        </form>
-
+        <Button text="Submit" />
+        <Button text="Cancel" onClick={() => dispatch(clearEditList())}/>
+      </form>
       </div>
-    </div>
+      </div>
+    </>
   );
 };

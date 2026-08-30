@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { ShoppingList } from '../components/ShoppingList/ShoppingList'
 import {Navbar} from '../components/ShoppingList/Navbar'
-import { ListItemForm } from '../components/ShoppingList/ListItemForm'
+import { ListItemForm } from '../components/ShoppingList/ListForm'
 import { useDispatch} from 'react-redux'
 import type { AppDispatch} from '../store'
 import { fetchLists } from '../redux/Features/ListSlice'

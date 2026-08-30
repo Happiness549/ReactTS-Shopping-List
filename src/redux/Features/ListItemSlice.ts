@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type{ PayloadAction } from "@reduxjs/toolkit";
 
 export interface ListItem {
   title: string;
@@ -14,12 +15,16 @@ interface ListItemState {
   items: ListItem[];
   loading: boolean;
   error: string | null;
+  isListModalOpen: boolean;
+  editingList: ListItem | null;
 }
 
 const initialState: ListItemState = {
   items: [],
   loading: false,
   error: null,
+  isListModalOpen: false,
+  editingList: null,
 };
 
 // FETCH ITEMS FOR ONE LIST
@@ -94,11 +99,64 @@ export const deleteListItem = createAsyncThunk(
   }
 );
 
+export const updateListItem = createAsyncThunk(
+  "items/updateListItem",
+  async (
+    updatedItem: ListItem,
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/itemList/${updatedItem.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedItem),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update item");
+      }
+
+      const data: ListItem = await response.json();
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong"
+      );
+    }
+  }
+);
+
 const itemSlice = createSlice({
   name: "items",
   initialState,
 
-  reducers: {},
+  reducers: {
+      openListModal: (state) => {
+      state.isListModalOpen = true;
+    },
+    closeListModal: (state) => {
+      state.isListModalOpen = false;
+    },
+    setListModal: (state, action: PayloadAction<boolean>) => {
+      state.isListModalOpen = action.payload;
+    },
+      startEditList: (state, action: PayloadAction<ListItem>) => {
+      state.editingList =action.payload;
+      state.isListModalOpen = true; 
+    },
+    clearEditList: (state) => {
+      state.editingList = null;
+      state.isListModalOpen =false;
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -164,8 +222,31 @@ const itemSlice = createSlice({
             : "Failed to delete item";
         })
 
+        // UPDATE
+        .addCase(updateListItem.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
 
+        .addCase(updateListItem.fulfilled, (state, action) => {
+          state.loading = false;
+          const index = state.items.findIndex((item) => item.id === action.payload.id);
+
+          if (index !== -1) {
+            state.items[index] = action.payload;
+          }
+
+          state.editingList = null;
+          state.isListModalOpen = false;
+        })
+
+        .addCase(updateListItem.rejected, (state, action) => {
+          state.loading = false;
+          state.error =
+            typeof action.payload === "string" ? action.payload : "Failed to update item";
+        })
         },
         });
 
+        export const { openListModal, closeListModal, setListModal,  clearEditList, startEditList,  } = itemSlice.actions;
         export default itemSlice.reducer;

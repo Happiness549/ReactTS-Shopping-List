@@ -5,14 +5,16 @@ import type { RootState, AppDispatch } from "../../store";
 import { fetchListItems } from "../../redux/Features/ListItemSlice";
 import { Text } from "../ui/Text";
 import { ListItemCard } from "./ListItemCard";
-import { ListForm } from "./ListForm";
+import { ListForm } from "./ListItemForm";
+import { Button } from "../ui/Button";
+import { PlusIcon } from "lucide-react";
+ import { openListModal } from '../../redux/Features/ListSlice'
 
 export const ListItems = () => {
   const { listId } = useParams<{ listId: string }>();
-
   const dispatch = useDispatch<AppDispatch>();
-
   const items = useSelector((state: RootState) => state.items.items);
+ 
 
   useEffect(() => {
     if (listId) {
@@ -25,6 +27,7 @@ export const ListItems = () => {
   }
 
   const currentItems = items.filter((item) => String(item.listId) === String(listId));
+   
 
   return (
     <>
@@ -39,8 +42,11 @@ export const ListItems = () => {
               key={item.id}
               ListItem={item}
             />
+            
           ))
         )}
+         <Button text={"Add List"} className="w-50 ml-160" id="openModalBtn" onClick={() => dispatch(openListModal())}/>
+         <PlusIcon className="ml-168 text-white absolute -mt-9" />
       </div>
     </>
   );
