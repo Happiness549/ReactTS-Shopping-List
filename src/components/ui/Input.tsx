@@ -25,7 +25,7 @@ export const Input:React.FC<InputProps> = ({type, placeholder, value, onChange,n
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          
+          required
          className="w-120 h-12 px-4 rounded-2xl border border-gray-300 outline-none focus:border-blue-500 transition-colors"
         />
 

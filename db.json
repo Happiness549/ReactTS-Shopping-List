@@ -79,7 +79,7 @@
       "id": "D4nvRZos3TI"
     },
     {
-      "category": "Birthday",
+      "category": "Party",
       "numberOfItem": 0,
       "completed": 0,
       "dateCreated": "2026-08-29T12:30:52.261Z",
@@ -152,12 +152,12 @@
     },
     {
       "listId": "D4nvRZos3TI",
-      "title": "Cake",
-      "category": "Buiscuits",
-      "notes": "Buy At Milky Lane",
-      "Quantity": "9",
+      "title": "Cabbage",
+      "category": "Veg",
+      "notes": "",
+      "Quantity": "4",
       "image": "",
-      "id": "ZHVjAq1Obp4"
+      "id": "rCw-a_MSgHg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

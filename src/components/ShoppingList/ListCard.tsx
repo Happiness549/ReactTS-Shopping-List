@@ -8,6 +8,7 @@ import type { AppDispatch } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type{ RootState } from "../../store";
+import { ShareIcon } from "lucide-react";
 
 
 interface ListCardProps {
@@ -39,11 +40,26 @@ export const ListCard: React.FC<ListCardProps> = ({shoppingList,}) => {
     dispatch(startEditList(shoppingList));
   }
 
+  const handleShare = async (e: React.MouseEvent) => {
+      e.stopPropagation();
+
+      if (shoppingList.id === undefined) return;
+
+      const shareUrl = `${window.location.origin}/shared-list/${shoppingList.id}`;
+
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        alert("List link copied!");
+      } catch (error) {
+        console.error("Failed to copy link:", error);
+      }
+};
+
 
   return (
-    <div className=" h-80 w-80 rounded-3xl  has-[:hover]:bg-gray-100 flex transition-colors duration-500">
+    <div className=" h-80 w-80 rounded-3xl  has-[:hover]:bg-gray-100 flex transition-colors duration-500 flex">
     <div className="rounded-4xl p-8 mt-5 w-70 h-70 border border-gray-300 xl hover:bg-gray-100 transition-colors duration-200" onClick={handleCardClick}>
-      <div className="p-2">
+      <div className="">
         
         <Text variant={"h2"} className="font-bold text-2xl text-[#001C44]">{shoppingList.category}</Text>
         <Text variant={"p"} className="p-2 text-[#001C44]">{itemCount}: items</Text>
@@ -56,6 +72,8 @@ export const ListCard: React.FC<ListCardProps> = ({shoppingList,}) => {
         <TrashIcon className="absolute mt-5 ml-3 text-red-700" />
         <Button text="" className="w-11 h-11 mt-4" onClick={handleEdit} />
         <EditIcon className="absolute ml-19 mt-6" />
+        <Button text="" className="w-12 h-12 mt-3 rounded-full bg-[#BCFEFE] " onClick={handleShare}/>
+        <ShareIcon className="absolute ml-35 mt-6"/>
       </div>
     </div>
     </div>

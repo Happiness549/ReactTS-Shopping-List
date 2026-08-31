@@ -9,6 +9,7 @@ import { Home } from './pages/Home'
 import { ProtectedRoute } from './components/ShoppingList/ProtectedRoute'
 import {ListItems} from './components/ShoppingList/ListItems'
 import {Profile} from './pages/Profile'
+import { SharedList } from './components/ShoppingList/SharedList'
 
  
 
@@ -24,6 +25,7 @@ function App() {
       <Route path='/' element={<Landing />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<SignUp />}/>
+      <Route path="/shared-list/:listId" element={<SharedList />}/>
     
       <Route element={<MainLayout/>}>
       <Route path='/profile' element={<Profile/>}/>

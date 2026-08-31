@@ -35,7 +35,7 @@ export const ListItemCard: React.FC<ListCardProps> = ({ ListItem,}) => {
         <Text variant={"p"}>Notes:  {ListItem.notes}</Text>
       </div>
 
-      <div className="flex gap-4 mt-4 ml-25 -mt-10">
+      <div className="flex gap-4 -mt-5 ml-95 ">
         <Button
           text=""
           className="w-12 h-12 mt-3 bg-red-300 rounded-full "

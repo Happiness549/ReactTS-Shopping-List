@@ -16,7 +16,7 @@ export const Landing = () => {
           <div className='ml-15'> 
             <div className='flex gap-3 mt-10'>
              <ShoppingCartIcon size={80} className='text-[#2D99AE]  '/> 
-              <Text variant={'p'} className='text-white ml-130'><Link to='/login'>Login</Link></Text>
+              <Text variant={'p'} className='text-white ml-130 text-2xl'><Link to='/login'>Login</Link></Text>
             </div>
        
             <Text variant={'h1'} className='text-white text-7xl mt-20 '>Smart <br />Shopping.</Text>

@@ -100,8 +100,8 @@
        <>
        {filteredLists.length === 0 ? (
   <>
-    <div className="flex">
-      <Text variant={'h1'} className='font-bold text-3xl'>Welcome: {userData?.name}</Text>
+    <div className="">
+      <Text variant={'h1'} className='font-bold text-3xl '>Welcome: {userData?.name}</Text>
       <div className="rounded-full h-40 w-40 ml-130 mt-30 bg-[#BCFEFE]">
       <Clipboard size={120} className="mt-5 ml-5 text-[#2D99AE]"/>
       </div>
@@ -119,7 +119,7 @@
   </>
 ) : (
   <>
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-4 mb-6 mt-5">
       <select
         value={sortBy}
         onChange={(e) =>
@@ -146,14 +146,16 @@
       </select>
     </div>
 
+    <div className="flex flex-wrap gap-5">
     {filteredLists.map((listItem) => (
       <ListCard
         key={listItem.id}
         shoppingList={listItem} 
       /> 
+       
     ))}
-
-     
+   </div>
+    
 
     <Card className='flex  bg-[#BCFEFE] w-300 mt-10 justify-cente text-center h-30 mt-10'>
       <div className='text-center'>

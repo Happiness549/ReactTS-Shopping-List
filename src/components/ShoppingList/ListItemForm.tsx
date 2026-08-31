@@ -112,7 +112,7 @@ export const ListForm = ({ listId }: ListFormProps) => {
 
   return (
     <>
-     <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+     <div className="fixed inset-0 flex  items-center justify-center bg-black/40 z-50">
      <div className="bg-white rounded-4xl p-8 w-140">
       <form onSubmit={handleSubmit}>
         <Input
@@ -166,8 +166,12 @@ export const ListForm = ({ listId }: ListFormProps) => {
           />
         )}
 
-        <Button text="Submit" />
-        <Button text="Cancel" onClick={() => dispatch(clearEditList())}/>
+        <div className="flex gap-5 mt-3">
+           <Button text="Submit" />
+           <Button text="Cancel" onClick={() => dispatch(clearEditList())}/>
+        </div>
+
+       
       </form>
       </div>
       </div>
