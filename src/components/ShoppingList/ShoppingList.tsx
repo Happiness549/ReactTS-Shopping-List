@@ -101,11 +101,11 @@
        {filteredLists.length === 0 ? (
   <>
     <div className="">
-      <Text variant={'h1'} className='font-bold text-3xl '>Welcome: {userData?.name}</Text>
-      <div className="rounded-full h-40 w-40 ml-130 mt-30 bg-[#BCFEFE]">
+      <Text variant={'h1'} className='font-bold text-3xl mt-10'>Welcome: {userData?.name}</Text>
+      <div className="rounded-full h-40 w-40 ml-160 mt-30 bg-[#BCFEFE]">
       <Clipboard size={120} className="mt-5 ml-5 text-[#2D99AE]"/>
       </div>
-      <ShoppingCartIcon size={120} className="mt-40 text-[#2D99AE]"/>
+      <ShoppingCartIcon size={120} className=" ml-200 -mt-40 text-[#2D99AE]"/>
     </div>
 
      <div className="mt-20 text-center">

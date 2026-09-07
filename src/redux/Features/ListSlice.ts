@@ -7,7 +7,6 @@ export interface ShoppingList {
   userId?: string;
   category: string;
   numberOfItem: number;
-  completed: number;
   dateCreated: string;
 }
 
@@ -145,7 +144,6 @@ export const updateList = createAsyncThunk(
           body: JSON.stringify({
             category: updatedList.category,
             numberOfItem: updatedList.numberOfItem,
-            completed: updatedList.completed,
           }),
         }
       );

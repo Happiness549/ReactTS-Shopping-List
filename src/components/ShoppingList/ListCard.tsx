@@ -62,8 +62,7 @@ export const ListCard: React.FC<ListCardProps> = ({shoppingList,}) => {
       <div className="">
         
         <Text variant={"h2"} className="font-bold text-2xl text-[#001C44]">{shoppingList.category}</Text>
-        <Text variant={"p"} className="p-2 text-[#001C44]">{itemCount}: items</Text>
-        <Text variant={"p"}className="text-[#001C44]">{shoppingList.completed}completed</Text>
+        <Text variant={"p"} className="p-2 text-[#001C44] -ml-2">{itemCount}: items</Text>
         <Text>Created: {new Date(shoppingList.dateCreated).toLocaleDateString()}</Text>
       </div>
 

@@ -51,13 +51,13 @@ export const Login = () => {
           className="w-14 h-auto object-contain rounded-lg ml-140 -mt-15"
         />
         <Text variant={'h1'} className='text-[#001C44] text-2xl text-center mt-9'> Login to your page </Text>
-      <form onSubmit={handleSubmit} className='mt-15 text-center flex flex-col gap-8 items-start'>
+      <form onSubmit={handleSubmit} className='mt-15  flex flex-col text-center gap-8 items-start'>
         
         <Input
           type="email"
           name="email"
           label="Email"
-           placeholder='@example.com'
+          placeholder='@example.com'
           value={signupForm.email}
           onChange={handleChange}
         />

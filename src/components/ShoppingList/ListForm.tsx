@@ -34,7 +34,6 @@ export const ListItemForm = () => {
         addList({
           category,
           numberOfItem: 0,
-          completed: 0,
           dateCreated: new Date().toISOString(),
         })
       );

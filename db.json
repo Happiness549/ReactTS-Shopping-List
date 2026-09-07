@@ -9,10 +9,10 @@
       "id": "DnMjzhu2eNM"
     },
     {
-      "name": "Sihle ",
+      "name": "Sihle Msihlez",
       "surname": "Mhlongo",
       "email": "sihle@gmail.com",
-      "cellNumber": "0781678950",
+      "cellNumber": "078167976",
       "password": "123456",
       "id": "bmtPX-0myLE"
     },
@@ -39,6 +39,22 @@
       "cellNumber": "0715373456467",
       "password": "1234",
       "id": "CeCvEYodz30"
+    },
+    {
+      "name": "Ntombi",
+      "surname": "Ntlahle",
+      "email": "ntombi29@gmail.com",
+      "cellNumber": "0876543456",
+      "password": "Ntombis",
+      "id": "OUgry_rtUH0"
+    },
+    {
+      "name": "Anele",
+      "surname": "Mbali",
+      "email": "mbalianele22@gmail.com",
+      "cellNumber": "07534567853",
+      "password": "123456789",
+      "id": "9BhDIxNHkPs"
     }
   ],
   "lists": [
@@ -71,15 +87,7 @@
       "id": "q1XBR16pqh8"
     },
     {
-      "category": "Birthday",
-      "numberOfItem": 0,
-      "completed": 0,
-      "dateCreated": "2026-08-29T12:30:21.139Z",
-      "userId": "bmtPX-0myLE",
-      "id": "D4nvRZos3TI"
-    },
-    {
-      "category": "Party",
+      "category": "Cosmetics",
       "numberOfItem": 0,
       "completed": 0,
       "dateCreated": "2026-08-29T12:30:52.261Z",
@@ -87,12 +95,18 @@
       "id": "9ixF71CK65k"
     },
     {
-      "category": "Cape",
+      "category": "Umemulo ka Ntombi",
       "numberOfItem": 0,
-      "completed": 0,
-      "dateCreated": "2026-08-29T12:31:57.471Z",
+      "dateCreated": "2026-08-31T06:52:09.198Z",
       "userId": "bmtPX-0myLE",
-      "id": "7phDV0FOkss"
+      "id": "7sO_QK91RLk"
+    },
+    {
+      "category": "Lulo's ceremony",
+      "numberOfItem": 0,
+      "dateCreated": "2026-08-31T07:01:16.451Z",
+      "userId": "bmtPX-0myLE",
+      "id": "fklKoKayF1w"
     }
   ],
   "itemList": [
@@ -124,7 +138,7 @@
       "id": "hkrslyd6TfQ"
     },
     {
-      "listId": "7phDV0FOkss",
+      "listId": null,
       "title": "Cabbage",
       "category": "Veg",
       "notes": "",
@@ -133,7 +147,7 @@
       "id": "Z-tovTFC01o"
     },
     {
-      "listId": "D4nvRZos3TI",
+      "listId": null,
       "title": "Cabbage",
       "category": "Veg",
       "notes": "",
@@ -142,22 +156,40 @@
       "id": "SOnV6MtOju8"
     },
     {
-      "listId": "D4nvRZos3TI",
-      "title": "Peach",
+      "listId": null,
+      "title": "Oranges",
       "category": "fruit",
-      "notes": "",
+      "notes": "But at Checkers",
       "Quantity": "5",
       "image": "",
       "id": "qKD6ZaPQTRc"
     },
     {
-      "listId": "D4nvRZos3TI",
-      "title": "Cabbage",
+      "listId": null,
+      "title": "Spinach",
       "category": "Veg",
-      "notes": "",
-      "Quantity": "4",
+      "notes": "Fresh ones",
+      "Quantity": "3",
       "image": "",
-      "id": "rCw-a_MSgHg"
+      "id": "xVftsh8A8-E"
+    },
+    {
+      "listId": "fklKoKayF1w",
+      "title": "Spinach",
+      "category": "Veg",
+      "notes": "But at Checkers",
+      "Quantity": "8",
+      "image": "",
+      "id": "sxR202V4obs"
+    },
+    {
+      "listId": "9ixF71CK65k",
+      "title": "Banana",
+      "category": "Fruit",
+      "notes": "But at Checkers",
+      "Quantity": "6",
+      "image": "",
+      "id": "QhmM4U0mtYw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
