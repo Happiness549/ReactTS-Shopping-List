@@ -46,7 +46,7 @@ export const Profile = () => {
                 <Button text={'Edit Profile'} onClick={(e) => { e.preventDefault(); setIsEditing(true); }} />
             </div>
 
-            <div className='w-270 h-40 bg-sky-100 rounded-3xl p-3 mt-5'>
+            <div className='w-270 h-40 bg-[#9ECAE1] rounded-3xl p-3 mt-5'>
                 <CircleUser className='absolute' size={130} />
                 <div className='flex gap-5 font-bold text-3xl text-center ml-50'>
                     <Text variant={'h2'}>{userData?.name}</Text>

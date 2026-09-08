@@ -44,11 +44,13 @@ export const ListItems = () => {
   return (
     <>
 
-      <div className="w-300 h-50 bg-blue-50 ml-10 rounded-3xl mt-5 ">
+      <div className="w-300 h-50 bg-[#9ECAE1] ml-10 rounded-3xl mt-5 ">
           {list && (
-        <div>
-          <Text variant="h2">{list.category}</Text>
-          <Text variant="p">Items: {currentItems.length}</Text>
+        <div className="flex flex-col gap-4  ml-10 mt-5">
+          <Text variant="h2" className="text-xl font-bold mt-6">
+            {list.category}
+          </Text>
+          <Text variant="p" className='text-md'>Items: {currentItems.length}</Text>
           <Text variant={'p'}>Created: {new Date(list.dateCreated).toLocaleDateString()}</Text>
           
         </div>
