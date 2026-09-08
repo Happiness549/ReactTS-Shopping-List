@@ -55,6 +55,22 @@
       "cellNumber": "07534567853",
       "password": "123456789",
       "id": "9BhDIxNHkPs"
+    },
+    {
+      "name": "Sphesihle",
+      "surname": "Gama",
+      "email": "sphesihlegama22@gmail.com",
+      "cellNumber": "0763425643",
+      "password": "12345678",
+      "id": "d92nFOz7Dn8"
+    },
+    {
+      "name": "Anele Anesh",
+      "surname": "Gama",
+      "email": "anelegama67@gmail.com",
+      "cellNumber": "0843456789",
+      "password": "12345676",
+      "id": "Sjl7FePAN4Q"
     }
   ],
   "lists": [
@@ -87,26 +103,25 @@
       "id": "q1XBR16pqh8"
     },
     {
-      "category": "Cosmetics",
+      "category": "Sam's Party",
       "numberOfItem": 0,
-      "completed": 0,
-      "dateCreated": "2026-08-29T12:30:52.261Z",
-      "userId": "bmtPX-0myLE",
-      "id": "9ixF71CK65k"
+      "dateCreated": "2026-09-07T13:22:11.309Z",
+      "userId": "d92nFOz7Dn8",
+      "id": "3RoPL3fFYYM"
     },
     {
-      "category": "Umemulo ka Ntombi",
+      "category": "Sam's Party with friends",
       "numberOfItem": 0,
-      "dateCreated": "2026-08-31T06:52:09.198Z",
-      "userId": "bmtPX-0myLE",
-      "id": "7sO_QK91RLk"
+      "dateCreated": "2026-09-07T13:25:44.097Z",
+      "userId": "Sjl7FePAN4Q",
+      "id": "cUty7_pzmy8"
     },
     {
-      "category": "Lulo's ceremony",
+      "category": "Anele's 21 First",
       "numberOfItem": 0,
-      "dateCreated": "2026-08-31T07:01:16.451Z",
-      "userId": "bmtPX-0myLE",
-      "id": "fklKoKayF1w"
+      "dateCreated": "2026-09-07T13:25:57.763Z",
+      "userId": "Sjl7FePAN4Q",
+      "id": "WVNz8GnZUSc"
     }
   ],
   "itemList": [
@@ -174,7 +189,7 @@
       "id": "xVftsh8A8-E"
     },
     {
-      "listId": "fklKoKayF1w",
+      "listId": null,
       "title": "Spinach",
       "category": "Veg",
       "notes": "But at Checkers",
@@ -183,13 +198,22 @@
       "id": "sxR202V4obs"
     },
     {
-      "listId": "9ixF71CK65k",
+      "listId": null,
       "title": "Banana",
       "category": "Fruit",
       "notes": "But at Checkers",
       "Quantity": "6",
       "image": "",
       "id": "QhmM4U0mtYw"
+    },
+    {
+      "listId": "cUty7_pzmy8",
+      "title": "Spinach",
+      "category": "Vegetable",
+      "notes": "But at Checkers",
+      "Quantity": "10",
+      "image": "",
+      "id": "iji49eR77M8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
